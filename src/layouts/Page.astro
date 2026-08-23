@@ -9,7 +9,7 @@ const { frontmatter } = Astro.props;
         <h1>{frontmatter.title}</h1>
         {frontmatter.description && <p>{frontmatter.description}</p>}
       </div>
-      <article class="prose"><slot /></article>
+      <article class:list={['prose', frontmatter.grid && 'logo-grid']}><slot /></article>
     </div>
   </main>
 </Base>

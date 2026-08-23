@@ -4,47 +4,6 @@ title: "Frequently Asked Questions"
 description: "Straight answers about TAK, servers, plugins, licensing and cost."
 ---
 
-## Frequently asked questions
-<div class="mobile-toc">
-
-### Jump to a question
-[What is TAK?](#what-is-tak)
-
-[How is Public Safety using TAK today?](#how-is-public-safety-using-tak-today)
-
-[Where is TAK really making a difference?](#where-is-tak-really-making-a-difference)
-
-[What are the different versions of TAK?](#what-are-the-different-versions-of-tak)
-
-[Where do I get ATAK/WinTAK and associated Plugins?](#where-do-i-get-atakwintak-and-associated-plugins)
-
-[Where can I get iTAK?](#where-can-i-get-itak)
-
-[What is a Plugin?](#what-is-a-plugin)
-
-[What is a TAK Server used for?](#what-is-a-tak-server-used-for)
-
-[What are my options for a TAK Server?](#what-are-my-options-for-a-tak-server)
-
-[Does TAK work without a cellular connection?](#does-tak-work-without-a-cellular-connection)
-
-[Can I use a Drone/UAS with TAK?](#can-i-use-a-droneuas-with-tak)
-
-[How much does TAK cost?](#how-much-does-tak-cost)
-
-[Who are the vendors listed on the links tab?](#who-are-the-vendors-listed-on-the-links-tab)
-
-[What is in the Resources Tab?](#what-is-in-the-resources-tab)
-
-[Where can I collaborate with other TAK users?](#where-can-i-collaborate-with-other-tak-users)
-
-[Where can I get updated news on TAK?](#where-can-i-get-updated-news-on-tak)
-
-[How do I get started?](#how-do-i-get-started)
-
-</div>
-
-
 ### What is TAK?
 
 TAK is a Government Off The Shelf (GOTS) suite of situational awareness applications from the federal government. 
@@ -112,13 +71,13 @@ There are several options for a TAK Server.
 
 The official TAK Server from the federal government is available for download at [www.TAK.gov](http://www.tak.gov). You can deploy this in your own environment as you see fit. Here is a [helpful tutorial](https://mytecknet.com/lets-build-a-tak-server/) to explain the ins and outs of TAK Server. 
 
-A variety of vendors offer TAK Server as a Service. You can leave it to them to manage your deployment. A list of vendors in no particular order of preference; Realm Alliance, Chesapeake Technology International, PAR Govt Sit(x), RaytheonBBN, VK Integrated Systems, GoTAK and Syzygy. Free TAK Server is another offering from the Free TAK Team that you can deploy in your own environment. All of these vendors are listed on the [Links page](/links).
+A variety of vendors offer TAK Server as a Service. You can leave it to them to manage your deployment. A list of vendors in no particular order of preference; Realm Alliance, Chesapeake Technology International, PAR Govt Sit(x), RaytheonBBN, VK Integrated Systems, GoTAK and Syzygy. Free TAK Server is another offering from the Free TAK Team that you can deploy in your own environment. All of these vendors are listed on the [Links page](/links/).
 
 ### Does TAK work without a cellular connection?
 
 One of the greatest features about TAK is its ability to work on a variety of networks and communication pathways. If you work in areas with poor to no cellular coverage, TAK provides an opportunity to continue to communicate. 
 
-Alternative communications solutions from the following vendors are listed on the [Links page](/links). These are listed in no particular order of preference; Somewear Labs, BearTooth, GoTenna, Meshtastic, ToughStump ATOS, Doodle Labs, TrellisWare, Persistent Systems, Silvus and Fenix Group.
+Alternative communications solutions from the following vendors are listed on the [Links page](/links/). These are listed in no particular order of preference; Somewear Labs, BearTooth, GoTenna, Meshtastic, ToughStump ATOS, Doodle Labs, TrellisWare, Persistent Systems, Silvus and Fenix Group.
 
 ### Can I use a Drone/UAS with TAK?
 

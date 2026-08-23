@@ -10,6 +10,16 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
         <h1>{frontmatter.title}</h1>
         {frontmatter.description && <p>{frontmatter.description}</p>}
       </div>
+
+      {toc.length > 0 && (
+        <details class="toc-mobile">
+          <summary>On this page<span>{toc.length}</span></summary>
+          {toc.map((h) => (
+            <a href={`#${h.slug}`} class={h.depth === 3 ? 'lvl-3' : ''}>{h.text}</a>
+          ))}
+        </details>
+      )}
+
       <div class={toc.length ? 'docs' : ''}>
         <article class="prose"><slot /></article>
         {toc.length > 0 && (
