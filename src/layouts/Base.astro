@@ -1,0 +1,95 @@
+---
+import Nav from '../components/Nav.astro';
+import '../styles/global.css';
+const { title, description = 'The TAK Syndicate — an ad-hoc group of focused professionals promoting the Team Awareness Kit for emergency response.' } = Astro.props;
+const full = title ? `${title} — The TAK Syndicate` : 'The TAK Syndicate';
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{full}</title>
+  <meta name="description" content={description} />
+  <meta property="og:title" content={full} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href={Astro.url.href} />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script is:inline>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t) document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <Nav />
+  <slot />
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div>&copy; {new Date().getFullYear()} The TAK Syndicate</div>
+      <div>Promoting the Team Awareness Kit for emergency response.</div>
+    </div>
+  </footer>
+
+  <script is:inline>
+    // theme toggle
+    document.querySelector('.theme-toggle')?.addEventListener('click', function () {
+      var root = document.documentElement;
+      var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+    // mobile nav
+    var tog = document.querySelector('.nav-toggle');
+    tog?.addEventListener('click', function () {
+      var nav = document.getElementById('nav');
+      var open = nav.classList.toggle('open');
+      tog.setAttribute('aria-expanded', String(open));
+    });
+    // copy buttons on every code block
+    document.querySelectorAll('.prose pre').forEach(function (pre) {
+      var wrap = document.createElement('div');
+      wrap.className = 'code-wrap';
+      pre.parentNode.insertBefore(wrap, pre);
+      wrap.appendChild(pre);
+      var b = document.createElement('button');
+      b.className = 'copy-btn';
+      b.type = 'button';
+      b.textContent = 'Copy';
+      b.addEventListener('click', function () {
+        navigator.clipboard.writeText(pre.innerText.trim()).then(function () {
+          b.textContent = 'Copied'; b.classList.add('copied');
+          setTimeout(function () { b.textContent = 'Copy'; b.classList.remove('copied'); }, 1600);
+        });
+      });
+      wrap.appendChild(b);
+    });
+    // wrap wide tables
+    document.querySelectorAll('.prose table').forEach(function (t) {
+      var s = document.createElement('div'); s.className = 'table-scroll';
+      t.parentNode.insertBefore(s, t); s.appendChild(t);
+    });
+    // TOC scroll-spy
+    var tocLinks = document.querySelectorAll('.toc a');
+    if (tocLinks.length) {
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          tocLinks.forEach(function (l) {
+            l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id);
+          });
+        });
+      }, { rootMargin: '-84px 0px -70% 0px' });
+      document.querySelectorAll('.prose h2[id], .prose h3[id]').forEach(function (h) { obs.observe(h); });
+    }
+  </script>
+</body>
+</html>

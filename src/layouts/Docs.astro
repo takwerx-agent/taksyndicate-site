@@ -1,0 +1,26 @@
+---
+import Base from './Base.astro';
+const { frontmatter, headings = [] } = Astro.props;
+const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
+---
+<Base title={frontmatter.title} description={frontmatter.description}>
+  <main id="main">
+    <div class="wrap">
+      <div class="page-head">
+        <h1>{frontmatter.title}</h1>
+        {frontmatter.description && <p>{frontmatter.description}</p>}
+      </div>
+      <div class={toc.length ? 'docs' : ''}>
+        <article class="prose"><slot /></article>
+        {toc.length > 0 && (
+          <aside class="toc">
+            <div class="toc-title">On this page</div>
+            {toc.map((h) => (
+              <a href={`#${h.slug}`} class={h.depth === 3 ? 'lvl-3' : ''}>{h.text}</a>
+            ))}
+          </aside>
+        )}
+      </div>
+    </div>
+  </main>
+</Base>

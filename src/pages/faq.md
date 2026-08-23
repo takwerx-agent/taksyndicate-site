@@ -1,0 +1,153 @@
+---
+layout: ../layouts/Docs.astro
+title: "Frequently Asked Questions"
+description: "Straight answers about TAK, servers, plugins, licensing and cost."
+---
+
+## Frequently asked questions
+<div class="mobile-toc">
+
+### Jump to a question
+[What is TAK?](#what-is-tak)
+
+[How is Public Safety using TAK today?](#how-is-public-safety-using-tak-today)
+
+[Where is TAK really making a difference?](#where-is-tak-really-making-a-difference)
+
+[What are the different versions of TAK?](#what-are-the-different-versions-of-tak)
+
+[Where do I get ATAK/WinTAK and associated Plugins?](#where-do-i-get-atakwintak-and-associated-plugins)
+
+[Where can I get iTAK?](#where-can-i-get-itak)
+
+[What is a Plugin?](#what-is-a-plugin)
+
+[What is a TAK Server used for?](#what-is-a-tak-server-used-for)
+
+[What are my options for a TAK Server?](#what-are-my-options-for-a-tak-server)
+
+[Does TAK work without a cellular connection?](#does-tak-work-without-a-cellular-connection)
+
+[Can I use a Drone/UAS with TAK?](#can-i-use-a-droneuas-with-tak)
+
+[How much does TAK cost?](#how-much-does-tak-cost)
+
+[Who are the vendors listed on the links tab?](#who-are-the-vendors-listed-on-the-links-tab)
+
+[What is in the Resources Tab?](#what-is-in-the-resources-tab)
+
+[Where can I collaborate with other TAK users?](#where-can-i-collaborate-with-other-tak-users)
+
+[Where can I get updated news on TAK?](#where-can-i-get-updated-news-on-tak)
+
+[How do I get started?](#how-do-i-get-started)
+
+</div>
+
+
+### What is TAK?
+
+TAK is a Government Off The Shelf (GOTS) suite of situational awareness applications from the federal government. 
+
+TAK is an acronym.
+
+The military version is called the Tactical Assault Kit while the civilian version is deamed the Team Awareness Kit.
+
+### How is Public Safety using TAK today?
+
+TAK is largely being used in federal law enforcement, dignitary protection and to a lesser degree in the fire service. State deployments are starting to take hold in Colorado and Texas. At a local level counties and cities are seeing the benefit of TAK as a method to better manage their local incidents and have the ability to collaborate on a common platform with federal entities like the FBI. The Coconino County Arizona Sheriff Search & Rescue Team is leveraging TAK as way to better manage their search operations.   
+
+On the fire service front, the United States Forest Service is in the beginning stages of building a WildFire TAK (WF-TAK) deployment to meet the needs of the [Dingell Act](https://www.fs.usda.gov/science-technology/fire/technology/law/tracking). The State of Colorado Center of Excellence is leading this project and more information can be found [here](https://www.cofiretech.org/feature-projects/team-awareness-kit-tak). At a local level the State of Colorado, Corona Fire Department and the Youngseville Fire Department have been deploying TAK as an all hazards tool. [The TAK Syndicate](https://www.youtube.com/channel/UCwQGzHkLVJiNzJJvh3lLGmA) and [State of Colorado Center of Excellence](https://www.youtube.com/@coetak) YouTube channels have a large library of videos showing how TAK can be integrated into the fire service. 
+
+TAK has seen success supporting EMS support at large events such as the [Outside Lands Music Festival](https://www.sfoutsidelands.com/) in San Francisco. This [video](https://www.youtube.com/watch?v=QaVy15l2mxM) from Greg Albrecht explains it well.
+
+### Where is TAK really making a difference?
+
+TAK makes its biggest impact with dismounted resource tracking and collaboration. Public safety as a whole has adopted technology to track where police/ems/fire vehicles are but when the personnel become dismounted and step away from the vehicle their position is unknown. When a public safety member has deployed TAK the can see themselves and their relationship to other users in real-time no matter where they are. Collaboration takes place while looking at common mapping application which reduces confusion and the requirement to ask questions over the airwaves.
+
+### What are the different versions of TAK?
+
+Android - ATAK
+
+iOS - iTAK
+
+Windows - WinTAK
+
+Browser - WebTAK
+
+Virtual Reality - VR-TAK
+
+### Where do I get ATAK/WinTAK and associated Plugins?
+
+The official U.S. Govt. repository is at [www.TAK.gov](http://www.tak.gov) and is the authoritative source for all TAK products. 
+
+If you are a government employee you can register at [www.TAK.gov](http://www.tak.gov) and gain access to government specific plugins. 
+
+Only military members have access to the Tactical Assault Kit. 
+
+The civilian version of ATAK and publicly released plugins can be downloaded at the [Google Play Store](https://play.google.com/store/apps/details?id=com.atakmap.app.civ&hl=en_US&gl=US). 
+
+The Play Store version does not come bundled with a few plugins that the version you will get from TAK.gov due to size limits from the playstore. 
+
+Third Party Plugins do exist and are typically available directly from an integrator.
+
+### Where can I get iTAK?
+
+iTAK can be downloaded from the [Apple app store](https://apps.apple.com/us/app/itak/id1561656396).  
+iTAK is still in beta and you will be limited in comparison to what ATAK offers.
+
+### What is a Plugin?
+
+A plugin is a companion application that adds additional capability like hardware integration, access to additional data elements or task specific functions into ATAK and WinTAK.
+
+### What is a TAK Server used for?
+
+A TAK Server is used to connect disparate users on different networks together. 
+
+A TAK Server can also be used as host for data to be shared and stored between users.
+
+### What are my options for a TAK Server?
+
+There are several options for a TAK Server. 
+
+The official TAK Server from the federal government is available for download at [www.TAK.gov](http://www.tak.gov). You can deploy this in your own environment as you see fit. Here is a [helpful tutorial](https://mytecknet.com/lets-build-a-tak-server/) to explain the ins and outs of TAK Server. 
+
+A variety of vendors offer TAK Server as a Service. You can leave it to them to manage your deployment. A list of vendors in no particular order of preference; Realm Alliance, Chesapeake Technology International, PAR Govt Sit(x), RaytheonBBN, VK Integrated Systems, GoTAK and Syzygy. Free TAK Server is another offering from the Free TAK Team that you can deploy in your own environment. All of these vendors are listed on the [Links page](/links).
+
+### Does TAK work without a cellular connection?
+
+One of the greatest features about TAK is its ability to work on a variety of networks and communication pathways. If you work in areas with poor to no cellular coverage, TAK provides an opportunity to continue to communicate. 
+
+Alternative communications solutions from the following vendors are listed on the [Links page](/links). These are listed in no particular order of preference; Somewear Labs, BearTooth, GoTenna, Meshtastic, ToughStump ATOS, Doodle Labs, TrellisWare, Persistent Systems, Silvus and Fenix Group.
+
+### Can I use a Drone/UAS with TAK?
+
+Many commercially available drones/UAS platforms can be used inside the TAK ecosystem via the ATAK UAS-Tool Plugin available on the Google Playstore. See the TAK Syndicate youtube channel for a brief introduction to the benefits of using a drone/UAS in ATAK.
+
+### How much does TAK cost?
+
+While the TAK applications are free from the federal government the costs associated with running a TAK program stem from deploying a server, the cost of end eser devices (phones, tablets etc), additional communication devices such as mesh radios, video and UAS Integrations, etc. The benefit of TAK is you can start out small and scale to what fits your needs and budget.
+
+### Who are the vendors listed on the links tab?
+
+The links page is meant to be a town square where vendors who work in the TAK space can be seen. A listing is not an endorsement and there are no financial interests.
+
+### What is in the Resources Tab?
+
+The resources tab is a link to a google drive that is full of publicly available data such as base maps, streaming and static map data elements,  wildfire specific maps and training material. The folder can also be reached at [http://maps.takserver.us](http://maps.takserver.us)
+
+### Where can I collaborate with other TAK users?
+
+ Both r[eddit](https://www.reddit.com/r/ATAK/) and [Discord](https://discord.gg/wNHJ9YZ) have open community chatrooms that discuss all aspects of TAK. 
+
+The Tak Syndicate has a closed space for public safety users to discuss deployment and development. If you are in public safety and would like to join this group please send an email to [thetaksyndicate@gmail.com](mailto:thetaksyndicate@gmail.com)
+
+### Where can I get updated news on TAK?
+
+ A great reseource to stay up to date on all TAK related news is at [www.civtak.org](http://www.civtak.org)
+
+### How do I get started?
+
+For more information please contact us at [thetaksyndicate@gmail.com](mailto:thetaksyndicate@gmail.com). 
+
+We are a free resource.

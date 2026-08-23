@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+
+const cards = [
+  ['/faq/',                     'Start with the FAQ',   'What TAK is, what it costs, which version you need, and where to get it.'],
+  ['/tak-server/',              'Stand up a TAK Server','A full walkthrough from a clean box to a running server.'],
+  ['/mediamtx-video-server/',   'MediaMTX Video Server','Build a video restreaming server and push live feeds into TAK.'],
+  ['/who-is-using-tak/',        'Who’s using TAK',      'A live map of agencies and organizations running TAK in the field.'],
+  ['/links/',                   'The ecosystem',        'Vendors, agencies, communities and tools across the TAK landscape.'],
+  ['/california-tak-resources/','California resources', 'Statewide contacts, working groups and reference material.'],
+];
+const videos = ['CSbLibPAcQk', 'tojMXYMVdyw'];
+---
+<Base>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Team Awareness Kit</span>
+      <h1>Shared situational awareness for emergency response.</h1>
+      <p class="lede">
+        The TAK Syndicate is an ad-hoc group of focused professionals collaborating to promote
+        the Team Awareness Kit as a tool to enhance efficiency, effectiveness and overall safety
+        for emergency response.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="/faq/">Start with the FAQ</a>
+        <a class="btn btn-ghost" href="/who-we-are/">Who we are</a>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    <div class="wrap">
+      <div class="card-grid">
+        {cards.map(([href, title, body]) => (
+          <a class="card" href={href}>
+            <h3>{title}</h3>
+            <p>{body}</p>
+          </a>
+        ))}
+      </div>
+
+      <h2 class="section-title">Watch</h2>
+      <div class="video-grid">
+        {videos.map((id) => (
+          <div class="embed">
+            <iframe src={`https://www.youtube-nocookie.com/embed/${id}`} loading="lazy"
+              title="The TAK Syndicate video" allowfullscreen
+              allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+          </div>
+        ))}
+      </div>
+    </div>
+  </main>
+</Base>

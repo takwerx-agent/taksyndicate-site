@@ -1,0 +1,36 @@
+---
+const { pathname } = Astro.url;
+const links = [
+  ['/', 'Home'],
+  ['/who-we-are/', 'Who we are'],
+  ['/who-is-using-tak/', 'Who’s using TAK'],
+  ['/faq/', 'FAQ'],
+  ['/california-tak-resources/', 'California'],
+  ['/links/', 'Links'],
+  ['/resources/', 'Resources'],
+  ['/tak-server/', 'TAK Server'],
+  ['/mediamtx-video-server/', 'MediaMTX'],
+  ['/shields/', 'Shields'],
+  ['/ahimta-symposium-team/', 'AHIMTA'],
+];
+const isActive = (href) => href === '/' ? pathname === '/' : pathname.startsWith(href);
+---
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark">TS</span>
+      <span>The TAK Syndicate</span>
+    </a>
+    <button class="icon-btn nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <nav class="nav" id="nav">
+      {links.map(([href, label]) => (
+        <a href={href} aria-current={isActive(href) ? 'page' : undefined}>{label}</a>
+      ))}
+    </nav>
+    <button class="icon-btn theme-toggle" aria-label="Toggle theme">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
