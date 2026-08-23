@@ -1,0 +1,6 @@
+# Old Google Sites install guides — content now lives on GitHub
+/tak-server            /infra-tak/   301
+/tak-server/*          /infra-tak/   301
+/mediamtx-video-server /tools/       301
+/mediamtx-video-server/* /tools/     301
+/home                  /             301

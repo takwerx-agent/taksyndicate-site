@@ -13,13 +13,20 @@ Every page is one Markdown file in `src/pages/`:
 | `who-we-are.md` | Who we are |
 | `who-is-using-tak.md` | Organizations deploying TAK (map embed) |
 | `faq.md` | FAQ (auto-generates its sidebar from `###` headings) |
+| `infra-tak.md` | infra-TAK — install guide, requirements, video |
+| `plugins.astro` | ATAK plugins (PLSS Grid downloads + guide) |
+| `tools.astro` | takwerx project catalog |
 | `california-tak-resources.md` | California resources |
 | `links.md` | Link/logo grid |
 | `resources.md` | Resources (Drive folder embed) |
-| `tak-server.md` | TAK Server guide |
-| `mediamtx-video-server.md` | MediaMTX guide |
 | `shields.md` | Shields |
 | `ahimta-symposium-team.md` | AHIMTA team |
+
+`plugins.astro` and `tools.astro` hold their data in an array at the top of the file —
+add a plugin or repo by adding one entry, no HTML needed.
+
+`public/_redirects` keeps the old Google Sites URLs alive: `/tak-server` and
+`/mediamtx-video-server` now 301 to the new pages.
 
 Edit the Markdown, commit, push — the site rebuilds and deploys itself.
 

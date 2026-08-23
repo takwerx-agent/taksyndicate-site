@@ -219,3 +219,40 @@ main { padding: 56px 0 80px; }
 .toc-mobile a.lvl-3 { padding-left: 12px; }
 .toc-mobile a:hover { color: var(--text); }
 @media (max-width: 980px) { .toc-mobile { display: block; } }
+
+/* ---------- repo / project cards ---------- */
+.stars { font-size: 0.78em; color: var(--muted); font-weight: 500; white-space: nowrap; }
+.repo-featured {
+  display: block; text-decoration: none; color: var(--text); padding: 30px;
+  border: 1px solid var(--border); border-radius: var(--radius); margin: 8px 0 12px;
+  background:
+    radial-gradient(520px 240px at 0% 0%, color-mix(in srgb, var(--accent) 13%, transparent), transparent 70%),
+    var(--surface);
+  transition: border-color .15s, transform .15s;
+}
+.repo-featured:hover { border-color: var(--accent); transform: translateY(-2px); }
+.repo-featured h2 { margin: 0 0 10px; font-size: 1.7rem; letter-spacing: -0.025em; border: 0; padding: 0; }
+.repo-featured p { margin: 0 0 16px; color: var(--muted); max-width: 68ch; line-height: 1.6; }
+.repo-tag {
+  display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+}
+.repo-cta { color: var(--accent); font-weight: 600; font-size: 0.9rem; }
+.repo-card { display: flex; flex-direction: column; }
+.repo-card p { flex: 1; margin-bottom: 14px; }
+.section-note { color: var(--muted); max-width: 72ch; margin: 0 0 8px; }
+.section-note a, .page-head a { color: var(--accent-2); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--accent-2) 35%, transparent); }
+
+/* button rows inside prose */
+.btn-row, .dl-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 22px 0 26px; }
+.btn-row a, .dl-row a { border-bottom: 0 !important; }
+.plugin-head h2 { margin-top: 0; border-top: 0; padding-top: 0; }
+
+/* buttons inside prose must beat the generic .prose a link colour */
+.prose a.btn { border-bottom: 0; }
+.prose a.btn-primary { color: var(--accent-ink); }
+.prose a.btn-ghost { color: var(--text); }
+
+/* inline link row with proper separators */
+.link-row { display: flex; flex-wrap: wrap; gap: 6px 0; align-items: center; }
+.link-row a + a::before { content: "·"; color: var(--muted); margin: 0 10px; border: 0; }

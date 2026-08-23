@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+
+const featured = {
+  name: 'infra-TAK', stars: 73, href: '/infra-tak/', repo: 'https://github.com/takwerx/infra-TAK',
+  blurb: 'A single web console that deploys and manages the whole TAK stack — TAK Server, Authentik, TAK Portal, Caddy SSL, CloudTAK, video, Node-RED and health monitoring. Upload your .deb, set a password, drive the rest from the browser.',
+};
+
+const repos = [
+  { name: 'mediamtx-installer', stars: 17, repo: 'https://github.com/takwerx/mediamtx-installer',
+    blurb: 'MediaMTX video streaming platform with a web-based configuration editor. RTSP, RTMP, HLS and SRT for ISR drones, cameras and tactical video feeds.' },
+  { name: 'tak-server-installer', stars: 13, repo: 'https://github.com/takwerx/tak-server-installer',
+    blurb: 'Production-ready TAK Server deployment scripts for Rocky Linux 9 and Ubuntu 22.04 — install, SSL via Caddy, and hardening.' },
+  { name: 'cloudtak-dispatcher-plugin', stars: 1, repo: 'https://github.com/takwerx/cloudtak-dispatcher-plugin',
+    blurb: 'Dispatcher plugin for CloudTAK — incident dispatch and event handling inside the browser-based common operating picture.' },
+];
+---
+<Base title="Tools" description="Open-source TAK infrastructure tools from takwerx — installers, video servers and CloudTAK plugins.">
+  <main id="main">
+    <div class="wrap">
+      <div class="page-head">
+        <h1>Tools</h1>
+        <p>Open-source software from <a href="https://github.com/takwerx">takwerx</a>. Everything here is free, on GitHub, and used in the field.</p>
+      </div>
+
+      <a class="repo-featured" href={featured.href}>
+        <div class="repo-tag">Start here</div>
+        <h2>{featured.name} <span class="stars">★ {featured.stars}</span></h2>
+        <p>{featured.blurb}</p>
+        <span class="repo-cta">Installation and requirements →</span>
+      </a>
+
+      <h2 class="section-title">More from takwerx</h2>
+      <div class="card-grid">
+        {repos.map((r) => (
+          <a class="card repo-card" href={r.repo}>
+            <h3>{r.name} <span class="stars">★ {r.stars}</span></h3>
+            <p>{r.blurb}</p>
+            <span class="repo-cta">View on GitHub →</span>
+          </a>
+        ))}
+      </div>
+
+      <h2 class="section-title">ATAK plugins</h2>
+      <p class="section-note">
+        Plugins that run inside ATAK itself live on their own page —
+        downloads, version matrix and user guides. <a href="/plugins/">See ATAK plugins →</a>
+      </p>
+    </div>
+  </main>
+</Base>
