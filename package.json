@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "sync:plugins": "node scripts/sync-plugins.mjs",
+    "predev": "test -f src/data/plugins.json || node scripts/sync-plugins.mjs",
+    "prebuild": "node scripts/sync-plugins.mjs"
   },
   "keywords": [],
   "author": "",

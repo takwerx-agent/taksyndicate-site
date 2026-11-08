@@ -1,0 +1,113 @@
+---
+import Base from '../../layouts/Base.astro';
+import { plugins, community, featured, disciplines, mb } from '../../lib/plugins.js';
+
+const used = Object.keys(disciplines).filter((k) => k !== 'all' && plugins.some((p) => p.tags.includes(k)));
+const count = (k) => plugins.filter((p) => p.tags.includes(k) || (k !== 'tools' && p.tags.includes('all'))).length;
+const rest = plugins.filter((p) => p !== featured);
+---
+<Base title="ATAK Plugins" description="Free, open-source ATAK plugins for wildfire, hazmat, search and rescue, law enforcement and every other discipline — downloads, manuals and guides.">
+  <main id="main">
+    <div class="wrap">
+      <div class="page-head">
+        <h1>ATAK Plugins</h1>
+        <p>Free and open source, signed through TAK’s third-party pipeline, and built by people who use them on incidents. {plugins.length} plugins and counting.</p>
+      </div>
+
+      {featured && (
+        <section class="market">
+          <a class="market-icon plug-icon" href={`/plugins/${featured.slug}/`}><img src={featured.icon} alt="" width="64" height="64" /></a>
+          <div class="market-body">
+            <span class="repo-tag">Easiest way in</span>
+            <h2>Install {featured.name} once. It handles the rest.</h2>
+            <p>{featured.name} lists every plugin on this page inside ATAK, installs the build that matches your ATAK version, and tells you when there’s an update.</p>
+            <div class="dl-row">
+              {featured.builds.map((b) => (
+                <a class="btn btn-primary" href={b.href}>ATAK {b.atak}<span class="btn-sub">{mb(b.size)}</span></a>
+              ))}
+              <a class="btn btn-ghost" href={`/plugins/${featured.slug}/`}>Details &amp; manual</a>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <div class="filters" role="group" aria-label="Filter by discipline">
+        <button type="button" class="chip" aria-pressed="true" data-f="*">All <span>{plugins.length}</span></button>
+        {used.map((k) => (
+          <button type="button" class="chip" aria-pressed="false" data-f={k} style={`--c: ${disciplines[k].c}`}><i></i>{disciplines[k].label} <span>{count(k)}</span></button>
+        ))}
+      </div>
+
+      <div class="plug-grid">
+        {rest.map((p) => (
+          <a class="plug-card" href={`/plugins/${p.slug}/`} data-tags={p.tags.join(' ')}>
+            <span class="plug-icon">{p.icon && <img src={p.icon} alt="" width="44" height="44" loading="lazy" />}</span>
+            <span class="plug-top">
+              <h3>{p.name}</h3>
+              <span class="ver">v{p.version}</span>
+            </span>
+            <p>{p.description}</p>
+            <span class="plug-tags">
+              {p.tags.map((t) => disciplines[t] && <span style={`--c: ${disciplines[t].c}`}><i></i>{disciplines[t].label}</span>)}
+            </span>
+            <span class="plug-meta">
+              {p.manual && <span>PDF manual</span>}
+              {p.shots.length > 0 && <span>{p.shots.length} screenshots</span>}
+              <span>ATAK {p.builds.map((b) => b.atak).reverse().join(' · ')}</span>
+            </span>
+          </a>
+        ))}
+      </div>
+      <p class="empty-note" hidden>No plugins tagged for that discipline yet.</p>
+
+      <h2 class="section-title"><b>+</b> From the community</h2>
+      <p class="section-note">
+        Plugins by other developers that TAKwerx Market also installs and updates. They live in their authors’
+        repositories. Built one? <a href="https://github.com/takwerx/takwerx-market/blob/main/docs/LIST_YOUR_PLUGIN.md">Get it listed</a>.
+      </p>
+      <div class="comm-grid">
+        {community.map((p) => (
+          <a class="comm-card" href={`https://github.com/${p.repo}`}>
+            <span class="plug-icon sm">{p.icon && <img src={p.icon} alt="" width="30" height="30" loading="lazy" />}</span>
+            <span>
+              <strong>{p.name}</strong> <span class="ver">{p.version && `v${p.version}`}</span>
+              <span class="comm-desc">{p.description}</span>
+              <span class="comm-dev">by {p.developer} ↗</span>
+            </span>
+          </a>
+        ))}
+      </div>
+
+      <h2 class="section-title"><b>?</b> Installing without the Market</h2>
+      <div class="prose">
+        <p>Each plugin is built for a specific ATAK-CIV version. Download the APK that matches yours (ATAK → Settings → About), install it on the device, then open ATAK’s <strong>Plugins</strong> manager and load it. <strong>A plugin built for a different ATAK version will not load.</strong></p>
+      </div>
+    </div>
+  </main>
+
+  <script is:inline>
+    (function () {
+      var chips = document.querySelectorAll('.filters .chip');
+      var cards = document.querySelectorAll('.plug-card');
+      var empty = document.querySelector('.empty-note');
+      function apply(f) {
+        var shown = 0;
+        cards.forEach(function (c) {
+          var t = c.dataset.tags.split(' ');
+          var on = f === '*' || t.indexOf(f) >= 0 || (f !== 'tools' && t.indexOf('all') >= 0);
+          c.hidden = !on; if (on) shown++;
+        });
+        chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c.dataset.f === f)); });
+        empty.hidden = shown > 0;
+      }
+      chips.forEach(function (c) {
+        c.addEventListener('click', function () {
+          apply(c.dataset.f);
+          history.replaceState(null, '', c.dataset.f === '*' ? location.pathname : '#' + c.dataset.f);
+        });
+      });
+      var h = location.hash.slice(1);
+      if (h && document.querySelector('.chip[data-f="' + h + '"]')) apply(h);
+    })();
+  </script>
+</Base>

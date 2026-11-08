@@ -9,3 +9,9 @@
 
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
+
+/plugin-assets/*
+  Cache-Control: public, max-age=86400
+
+/manuals/*
+  Cache-Control: public, max-age=3600

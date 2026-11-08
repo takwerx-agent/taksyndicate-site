@@ -1,0 +1,123 @@
+---
+import Base from '../../layouts/Base.astro';
+import { plugins, disciplines, mb, readmeHtml } from '../../lib/plugins.js';
+
+export function getStaticPaths() {
+  return plugins.map((p) => ({ params: { slug: p.slug }, props: { p } }));
+}
+const { p } = Astro.props;
+const repoUrl = `https://github.com/${p.repo}`;
+const s = p.sections;
+const reqs = [['Equipment required', s.requires], ['Works with', s.supports], ['Network', s.ports]]
+  .filter(([, t]) => t && !/^none\.?$/i.test(t.trim()));
+---
+<Base title={`${p.name} — ATAK plugin`} description={p.description}>
+  <main id="main" class="plug-page">
+    <div class="wrap">
+      <a class="back" href="/plugins/">← All plugins</a>
+
+      <header class="plug-head">
+        <span class="plug-icon lg">{p.icon && <img src={p.icon} alt="" width="72" height="72" />}</span>
+        <div>
+          <h1>{p.name} <span class="ver">v{p.version}</span></h1>
+          <p class="plug-lede">{p.description}</p>
+          <span class="plug-tags">
+            {p.tags.map((t) => disciplines[t] && <a href={`/plugins/#${t}`} style={`--c: ${disciplines[t].c}`}><i></i>{disciplines[t].label}</a>)}
+          </span>
+        </div>
+      </header>
+
+      <div class="plug-layout">
+        <aside class="dl-panel">
+          <div class="dl-title">Download v{p.version}</div>
+          {p.builds.map((b, i) => (
+            <a class:list={['btn', i === 0 ? 'btn-primary' : 'btn-ghost', 'dl-btn']} href={b.href}>
+              ATAK-CIV {b.atak}<span class="btn-sub">{mb(b.size)}</span>
+            </a>
+          ))}
+          <p class="dl-note">Pick the build that matches your ATAK version, then load it in ATAK’s Plugins manager. Or get it through <a href="/plugins/takwerx-market/">TAKwerx Market</a>.</p>
+          <div class="dl-links">
+            {p.manual && <a href={p.manual.href} target="_blank" rel="noopener">User manual (PDF, {mb(p.manual.bytes)})</a>}
+            {p.guide && <a href={p.guide}>Online guide</a>}
+            <a href={p.release}>Release notes</a>
+            <a href={repoUrl}>Source code</a>
+            <a href={`${repoUrl}/issues`}>Report a problem</a>
+          </div>
+        </aside>
+
+        <div class="plug-main">
+          {p.shots.length > 0 && (
+            <section>
+              <h2 class="section-title" style="margin-top:0"><b>01</b> Screenshots</h2>
+              <div class="shots">
+                {p.shots.map((sh, i) => (
+                  <a class="shot" href={sh.src} target="_blank" rel="noopener">
+                    <img src={sh.src} alt={sh.alt} width={sh.w} height={sh.h} loading={i < 3 ? 'eager' : 'lazy'} />
+                    {sh.alt && <span>{sh.alt}</span>}
+                  </a>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {s.purpose && (
+            <section>
+              <h2 class="section-title"><b>02</b> What it does</h2>
+              <div class="prose readme" set:html={readmeHtml(s.purpose)} />
+            </section>
+          )}
+
+          {reqs.length > 0 && (
+            <section>
+              <h2 class="section-title"><b>03</b> Requirements</h2>
+              <div class="prose readme">
+                {reqs.map(([h, t]) => (<><h4>{h}</h4><Fragment set:html={readmeHtml(t)} /></>))}
+              </div>
+            </section>
+          )}
+
+          {p.manual && (
+            <section>
+              <h2 class="section-title"><b>04</b> User manual</h2>
+              <div class="manual">
+                <a class="manual-cover" href={p.manual.href} target="_blank" rel="noopener" data-pdf={p.manual.href}>
+                  {p.manual.cover && <img src={p.manual.cover} alt={`${p.name} user manual title page`} loading="lazy" />}
+                  <span class="manual-cta">
+                    <span class="btn btn-primary">Read the manual</span>
+                    <span class="manual-facts">{p.manual.pages && `${p.manual.pages} pages · `}PDF · {mb(p.manual.bytes)}</span>
+                  </span>
+                </a>
+              </div>
+              <p class="dl-note"><a href={p.manual.href} download>Download the PDF</a> · The same manual ships inside the plugin, under ATAK’s Tool Preferences.</p>
+            </section>
+          )}
+
+          {s.status && (
+            <section>
+              <h2 class="section-title"><b>05</b> Status</h2>
+              <div class="prose readme" set:html={readmeHtml(s.status)} />
+            </section>
+          )}
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script is:inline>
+    // Wide screens: open the manual in place. Phones can't embed PDFs well, so the link opens it instead.
+    document.querySelectorAll('.manual-cover').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        if (window.matchMedia('(max-width: 760px)').matches) return;
+        e.preventDefault();
+        var frame = document.createElement('div');
+        frame.className = 'pdf-frame';
+        var o = document.createElement('object');
+        o.data = a.dataset.pdf + '#view=FitH'; o.type = 'application/pdf';
+        o.innerHTML = '<p class="pdf-fallback">Your browser can’t show the PDF here. <a href="' + a.dataset.pdf + '">Open the manual</a>.</p>';
+        frame.appendChild(o);
+        a.parentNode.replaceChild(frame, a);
+        frame.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</Base>

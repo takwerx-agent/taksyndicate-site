@@ -1,0 +1,53 @@
+name: Deploy
+
+# Builds the site and deploys it to Cloudflare (Workers static assets, see wrangler.jsonc).
+# The build pulls the TAKwerx Market's live catalog and compiles each plugin's manual,
+# so the generated files (public/manuals, public/plugin-assets, src/data/plugins.json)
+# never live in git. The schedule picks up new plugin releases without a push.
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # Same Typst the plugin builds use to put the manual inside the APK.
+      - name: Install Typst
+        run: |
+          curl -fsSL --retry 5 https://github.com/typst/typst/releases/download/v0.13.1/typst-x86_64-unknown-linux-musl.tar.xz \
+            | tar -xJ -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/typst-x86_64-unknown-linux-musl" >> "$GITHUB_PATH"
+
+      - run: npm ci
+
+      - name: Build (syncs plugins, then astro build)
+        run: npm run build
+
+      - name: Deploy to Cloudflare
+        if: ${{ env.CF_TOKEN != '' }}
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
