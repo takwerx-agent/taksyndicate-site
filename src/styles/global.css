@@ -591,3 +591,28 @@ main { padding: 56px 0 80px; }
 .tw-foot-text { flex: 1; min-width: 240px; }
 .tw-foot .cta-row { flex: none; }
 @media (max-width: 640px) { .tw-coffee img { width: 120px; height: 120px; } }
+
+/* TAKwerx: ATAK Terminal feature */
+.tw-term {
+  display: grid; grid-template-columns: 1.05fr 1fr; gap: 36px; align-items: center; margin: 36px 0 20px; padding: 32px;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border)); border-radius: var(--radius); position: relative;
+  background:
+    radial-gradient(700px 300px at 0% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%),
+    linear-gradient(var(--grid) 1px, transparent 1px) 0 0 / 24px 24px, linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0 / 24px 24px,
+    var(--surface);
+}
+@media (max-width: 980px) { .tw-term { grid-template-columns: 1fr; padding: 24px; } }
+.tw-term h2 { font-family: var(--display); text-transform: uppercase; font-size: clamp(2.2rem, 4vw, 3rem); line-height: 1; margin: 8px 0 12px; }
+.tw-term-lede { color: var(--text); font-size: 1.08rem; margin: 0 0 14px; }
+.tw-term-points { list-style: none; padding: 0; margin: 0 0 14px; }
+.tw-term-points li { position: relative; padding-left: 18px; margin: 6px 0; color: var(--muted); }
+.tw-term-points li::before { content: ""; position: absolute; left: 0; top: .62em; width: 7px; height: 7px; background: var(--accent); }
+.tw-term-points b { color: var(--text); }
+.tw-term-req { font: 0.72rem/1.6 var(--mono); color: var(--muted); letter-spacing: 0.02em; margin: 0 0 20px; }
+.tw-term-cmds { max-width: none; min-width: 0; }
+.tw-os { font: 500 0.68rem var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin: 14px 0 -10px; }
+.tw-os:first-child { margin-top: 0; }
+.tw-term-cmds pre { white-space: pre-wrap; word-break: break-all; font-size: 0.8rem; }
+.tw-term-note { color: var(--muted); font-size: 0.86rem; margin: 14px 0 0; }
+.tw-hubs.two { grid-template-columns: 1fr 1fr; }
+@media (max-width: 980px) { .tw-hubs.two { grid-template-columns: 1fr; } }

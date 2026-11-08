@@ -5,14 +5,15 @@ import { plugins, community, featured } from '../lib/plugins.js';
 const GH = 'https://github.com/takwerx';
 
 const cloudtak = [
-  { name: 'Dispatcher', repo: 'cloudtak-dispatcher-plugin', blurb: 'Incident dispatch and event handling inside CloudTAK, the browser-based common operating picture.' },
-  { name: 'Lightning', repo: 'CloudTAK-Plugin-Lightning', blurb: 'Blitzortung lightning strikes on your CloudTAK map. Local to your own map, not sent to anyone else.' },
+  { name: 'Dispatcher', href: `${GH}/cloudtak-dispatcher-plugin`, cta: 'Source & changelog on GitHub →',
+    blurb: 'Create and manage incidents on the map, organize them under named events, assign responders, and notify them through mission chat and GeoChat.' },
+  { name: 'TAK Simulator', href: `${GH}/infra-TAK/blob/main/docs/SIMULATOR.md`, cta: 'How the Simulator works →',
+    blurb: 'A director panel inside CloudTAK for live exercises, demos and load tests: scripted units on an isolated simulation channel, eight ready-made scenarios, and a clean stop that removes everything. Deployed as an infra-TAK module.' },
 ];
 
 const more = [
-  { name: 'MediaMTX Installer', repo: 'mediamtx-installer', tag: 'Video', blurb: 'Video streaming for drones, cameras and tactical feeds (RTSP, RTMP, HLS, SRT), with a web configuration editor.' },
-  { name: 'TAK Server Installer', repo: 'tak-server-installer', tag: 'Server', blurb: 'Scripts that install and harden TAK Server on Rocky Linux 9 or Ubuntu 22.04, with SSL through Caddy.' },
-  { name: 'ATAK Terminal', repo: 'atak-terminal', tag: 'Beta · Mac', blurb: 'Real ATAK in a window on your Mac, running on the GPU. One line installs it.' },
+  { name: 'MediaMTX Installer', repo: 'mediamtx-installer', tag: 'Video · Standalone', blurb: 'Video streaming for drones, cameras and tactical feeds (RTSP, RTMP, HLS, SRT), with a web configuration editor.' },
+  { name: 'TAK Server Installer', repo: 'tak-server-installer', tag: 'Server · Standalone', blurb: 'Scripts that install and harden TAK Server on Rocky Linux 9 or Ubuntu 22.04, with SSL through Caddy.' },
   { name: 'ATAK Plugin Pipeline', repo: 'atak-plugin-pipeline', tag: 'Developers', blurb: 'How TAKwerx builds ATAK plugins and gets them through TAK’s third-party signing pipeline, as a Claude Code skill.' },
 ];
 
@@ -20,7 +21,9 @@ const more = [
 const issueTargets = [
   ['infra-TAK', 'infra-TAK'],
   ...plugins.map((p) => [`${p.name} (ATAK plugin)`, p.repo.split('/')[1]]),
-  ...cloudtak.map((c) => [`${c.name} (CloudTAK plugin)`, c.repo]),
+  ['ATAK Terminal', 'atak-terminal'],
+  ['Dispatcher (CloudTAK plugin)', 'cloudtak-dispatcher-plugin'],
+  ['TAK Simulator (infra-TAK module)', 'infra-TAK'],
   ...more.map((m) => [m.name, m.repo]),
 ];
 ---
@@ -32,7 +35,32 @@ const issueTargets = [
         <p>The open-source workshop behind infra-TAK and the TAKwerx ATAK and CloudTAK plugins. Built by a first responder, free for everyone, and all of it on GitHub.</p>
       </div>
 
-      <div class="tw-hubs">
+      <section class="tw-term">
+        <div class="tw-term-text">
+          <span class="tw-kicker">New · Beta</span>
+          <h2>TAKwerx ATAK Terminal</h2>
+          <p class="tw-term-lede">Real ATAK, with its real plugins, in a window on your Mac or Windows PC, running on your graphics chip. Train, build data packages and plan from a desk with a mouse and a big screen.</p>
+          <ul class="tw-term-points">
+            <li><b>Two steps.</b> Download ATAK-CIV from tak.gov, then paste one line.</li>
+            <li><b>Plugins built in.</b> TAKwerx Market comes installed; add Cursorwerx and the mouse and trackpad just work.</li>
+            <li><b>Nothing leaves your machine.</b> No account, no telemetry, no paid tier.</li>
+          </ul>
+          <p class="tw-term-req">Mac: Apple Silicon (M1 or newer), macOS 13+ · Windows 10 (2004+) or 11, 64-bit, a supported graphics chip · 16 GB memory recommended</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href={`${GH}/atak-terminal`}>Install guide on GitHub</a>
+            <a class="btn btn-ghost" href="https://tak.gov/products/atak-civ">Get ATAK-CIV on tak.gov</a>
+          </div>
+        </div>
+        <div class="tw-term-cmds prose">
+          <div class="tw-os">Mac · Terminal</div>
+          <pre><code>curl -fsSL https://raw.githubusercontent.com/takwerx/atak-terminal/main/install.sh | bash</code></pre>
+          <div class="tw-os">Windows · PowerShell (not as Administrator)</div>
+          <pre><code>irm https://raw.githubusercontent.com/takwerx/atak-terminal/main/install.ps1 | iex</code></pre>
+          <p class="tw-term-note">First run downloads about 2 GB and takes a few minutes. After that ATAK opens in about half a minute from its own icon.</p>
+        </div>
+      </section>
+
+      <div class="tw-hubs two">
         <a class="tw-hub" href="/infra-tak/">
           <span class="tw-kicker">Server side</span>
           <h2>infra-TAK</h2>
@@ -41,33 +69,28 @@ const issueTargets = [
           <span class="repo-cta">Install guide →</span>
         </a>
         <a class="tw-hub" href="/plugins/">
-          <span class="tw-kicker">On the device</span>
-          <h2>ATAK plugins</h2>
-          <p>Maps, weather, fire, alerts, airspace, cameras, comms and more, signed for ATAK-CIV. {featured?.name} installs and updates all of them from inside ATAK.</p>
-          <span class="tw-stat"><b>{plugins.length}</b> TAKwerx plugins · <b>{community.length}</b> community</span>
-          <span class="repo-cta">Browse plugins →</span>
-        </a>
-        <a class="tw-hub" href="#cloudtak">
-          <span class="tw-kicker">In the browser</span>
-          <h2>CloudTAK plugins</h2>
-          <p>Add-ons for CloudTAK, the browser-based common operating picture that infra-TAK can deploy alongside TAK Server.</p>
-          <span class="tw-stat"><b>{cloudtak.length}</b> plugins</span>
-          <span class="repo-cta">See them below ↓</span>
+          <span class="tw-kicker">ATAK &amp; CloudTAK</span>
+          <h2>Plugins</h2>
+          <p>ATAK plugins for maps, weather, fire, alerts, airspace, cameras and comms, installed and updated from inside ATAK by {featured?.name}. Plus CloudTAK plugins for dispatch and live exercises.</p>
+          <span class="tw-stat"><b>{plugins.length}</b> ATAK · <b>{cloudtak.length}</b> CloudTAK · <b>{community.length}</b> community</span>
+          <span class="repo-cta">Browse ATAK plugins →</span>
         </a>
       </div>
 
       <h2 class="section-title" id="cloudtak"><b>01</b> CloudTAK plugins</h2>
+      <p class="section-note">Running infra-TAK? Install and update these straight from the <strong>TAK Portal marketplace</strong> — no files to download. Everyone else can get them from GitHub.</p>
       <div class="card-grid">
         {cloudtak.map((c) => (
-          <a class="card repo-card" href={`${GH}/${c.repo}`}>
+          <a class="card repo-card" href={c.href}>
             <h3>{c.name}</h3>
             <p>{c.blurb}</p>
-            <span class="repo-cta">Source &amp; install on GitHub →</span>
+            <span class="repo-cta">{c.cta}</span>
           </a>
         ))}
       </div>
 
       <h2 class="section-title"><b>02</b> More from TAKwerx</h2>
+      <p class="section-note">The two installers below set up MediaMTX or TAK Server on their own. For the easier route, <a href="/infra-tak/">infra-TAK</a> deploys both — and the rest of the stack — from its console.</p>
       <div class="card-grid">
         {more.map((m) => (
           <a class="card repo-card" href={`${GH}/${m.repo}`}>
@@ -109,7 +132,7 @@ const issueTargets = [
         </a>
         <div class="tw-foot-text">
           <span class="tw-kicker">Keep it going</span>
-          <p>TAKwerx is built nights and weekends and given away. If it saved you time on an incident, a coffee helps.</p>
+          <p>Coffee helps fuel the TAKwerx innovation.</p>
         </div>
         <div class="cta-row">
           <a class="btn btn-ghost" href="https://buymeacoffee.com/takwerx">Buy TAKwerx a coffee</a>
