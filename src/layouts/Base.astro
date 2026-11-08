@@ -1,6 +1,9 @@
 ---
 import Nav from '../components/Nav.astro';
 import '../styles/global.css';
+// Adobe Fonts web project ID for Univia Pro (fonts.adobe.com -> Web Projects), e.g. 'abc1234'.
+// Until it is set, Univia Pro shows only on machines that have it installed; others get Public Sans.
+const ADOBE_FONTS_KIT = '';
 const { title, description = 'The TAK Syndicate — an ad-hoc group of focused professionals promoting the Team Awareness Kit for emergency response.' } = Astro.props;
 const full = title ? `${title} — The TAK Syndicate` : 'The TAK Syndicate';
 ---
@@ -19,6 +22,7 @@ const full = title ? `${title} — The TAK Syndicate` : 'The TAK Syndicate';
   <link rel="sitemap" href="/sitemap-index.xml" />
   <link rel="icon" href="/favicon-32.png" sizes="32x32" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  {ADOBE_FONTS_KIT && <link rel="stylesheet" href={`https://use.typekit.net/${ADOBE_FONTS_KIT}.css`} />}
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />

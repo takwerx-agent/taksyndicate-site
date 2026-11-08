@@ -23,7 +23,7 @@
   --d-events:  #b4c0cc;
   --radius: 4px;
   --maxw: 1180px;
-  --font: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font: "univia-pro", "Univia Pro", "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --display: "Barlow Condensed", "Public Sans", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
