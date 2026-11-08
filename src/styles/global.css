@@ -628,3 +628,11 @@ main.map-page { padding: 0; }
 .map-open { margin-left: auto; font: 500 0.72rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); text-decoration: none; }
 .map-full { display: block; width: 100%; height: calc(100vh - 72px - 51px); height: calc(100svh - 72px - 51px); min-height: 420px; border: 0; }
 .map-page + .site-footer { margin-top: 0; }
+
+/* ---------- brand gold (from the shield) ---------- */
+:root { --gold: #d6a75e; }
+:root[data-theme="light"] { --gold: #8a6420; }
+.prose h3 { color: var(--gold); }
+.docs .prose h3 { padding-left: 14px; position: relative; }
+.docs .prose h3::before { content: ""; position: absolute; left: 0; top: .2em; bottom: .2em; width: 3px; background: var(--gold); border-radius: 1px; }
+.toc a.lvl-3.active, .toc a.active { color: var(--gold); border-left-color: var(--gold); }
