@@ -14,7 +14,7 @@ The military version is called the Tactical Assault Kit while the civilian versi
 
 ### How is Public Safety using TAK today?
 
-TAK is largely being used in federal law enforcement, dignitary protection and to a lesser degree in the fire service. Statewide deployments are up and running in Colorado ([COTAK](https://cotak.gov)), Texas (TAK Texas) and North Carolina (NCTAK). At a local level counties and cities are seeing the benefit of TAK as a method to better manage their local incidents and have the ability to collaborate on a common platform with federal entities like the FBI. The Coconino County Arizona Sheriff Search & Rescue Team is leveraging TAK as way to better manage their search operations.   
+TAK is largely being used in federal law enforcement, dignitary protection and to a lesser degree in the fire service. Statewide deployments are up and running in Colorado ([COTAK](https://cotak.gov)), Texas (TX-DPS) and North Carolina (NCTAK). At a local level counties and cities are seeing the benefit of TAK as a method to better manage their local incidents and have the ability to collaborate on a common platform with federal entities like the FBI. The Coconino County Arizona Sheriff Search & Rescue Team is leveraging TAK as way to better manage their search operations.   
 
 On the fire service front, COTAK, the State of Colorado's TAK program run by the Colorado Center of Excellence, is leading the way; more information can be found [here](https://www.cofiretech.org/feature-projects/team-awareness-kit-tak). At a local level the State of Colorado, Corona Fire Department and the Youngseville Fire Department have been deploying TAK as an all hazards tool. [The TAK Syndicate](https://www.youtube.com/channel/UCwQGzHkLVJiNzJJvh3lLGmA) and [State of Colorado Center of Excellence](https://www.youtube.com/@coetak) YouTube channels have a large library of videos showing how TAK can be integrated into the fire service. 
 
@@ -53,10 +53,10 @@ Third-party plugins are typically available directly from their developer or int
 
 iTAK can be downloaded from the [Apple App Store](https://apps.apple.com/us/app/itak/id1561656396).
 
-TAK Aware, a lightweight iOS TAK client from Flight Tactics, is also on the [Apple App Store](https://apps.apple.com/us/app/tak-aware/id6738631659).
+TAK Aware, an iOS TAK client from Flight Tactics, is also on the [Apple App Store](https://apps.apple.com/us/app/tak-aware/id6738631659).
 
 
-iTAK is still in beta and you will be limited in comparison to what ATAK offers.
+iOS TAK clients don't have a plugin architecture, so they are limited to the capabilities built into the core application.
 
 ### What is a Plugin?
 
@@ -76,13 +76,15 @@ The official TAK Server from the federal government is available for download at
 
 [infra-TAK](/infra-tak/) is a free, open-source web console that deploys and manages TAK Server in your own environment, along with Authentik, TAK Portal, SSL, CloudTAK, MediaMTX video and Node-RED. Upload the TAK Server package from TAK.gov and run the rest from the browser.
 
-A variety of vendors offer TAK Server as a Service. You can leave it to them to manage your deployment. A list of vendors in no particular order of preference; Realm Alliance, Parsons, Booz Allen, RaytheonBBN, EO-TAK, GoTAK and Syzygy. Free TAK Server is another offering from the Free TAK Team that you can deploy in your own environment. All of these vendors are listed on the [Links page](/links/).
+A variety of vendors offer TAK Server as a Service. You can leave it to them to manage your deployment. A list of vendors in no particular order of preference; Realm Alliance, Parsons, Booz Allen, RaytheonBBN, EO-TAK, GoTAK and Syzygy. [OpenTAKServer](https://opentakserver.io) is an open-source TAK server you can deploy in your own environment. All of these vendors are listed on the [Links page](/links/).
 
 ### Does TAK work without a cellular connection?
 
 One of the greatest features about TAK is its ability to work on a variety of networks and communication pathways. If you work in areas with poor to no cellular coverage, TAK provides an opportunity to continue to communicate. 
 
 Alternative communications solutions from the following vendors are listed on the [Links page](/links/). These are listed in no particular order of preference; Somewear Labs, BearTooth, GoTenna, Meshtastic, ToughStump ATOS, Doodle Labs, TrellisWare, Persistent Systems, Silvus and Fenix Group.
+
+ATAK and TAK Aware have also been tested over T-Mobile's satellite service (T-Satellite), which connects compatible phones directly to satellites where there is no cell coverage.
 
 ### Can I use a Drone/UAS with TAK?
 
