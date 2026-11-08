@@ -95,7 +95,8 @@ const reqs = [['Equipment required', s.requires], ['Works with', s.supports], ['
           {s.status && (
             <section>
               <h2 class="section-title"><b>05</b> Status</h2>
-              <div class="prose readme" set:html={readmeHtml(s.status)} />
+              <div class="prose readme" set:html={readmeHtml(s.status.split(/\n\s*\n/)[0])} />
+              <p class="dl-note"><a href={`${repoUrl}/releases`}>Full release history →</a></p>
             </section>
           )}
         </div>

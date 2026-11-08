@@ -1,11 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
+import { plugins } from '../lib/plugins.js';
 
 const cards = [
   ['/faq/',                    'New to TAK?',          'What TAK is, what it costs, which version you need, and where to get it.'],
   ['/infra-tak/',              'infra-TAK',            'A free, open-source console that stands up a TAK Server stack. No more SSH.'],
   ['/plugins/',                'ATAK plugins',         'Free plugins like PLSS Grid — downloads, guides and version matrix.'],
-  ['/tools/',                  'Open-source tools',    'Community installers, video servers and CloudTAK plugins.'],
+  ['/takwerx/',                'TAKwerx',              'The open-source hub: infra-TAK, ATAK and CloudTAK plugins, and where to report problems.'],
   ['/who-is-using-tak/',       'Who’s using TAK',      'A live map of agencies and organizations running TAK in the field.'],
   ['/links/',                  'The ecosystem',        'Vendors, agencies, communities and tools across the TAK landscape.'],
 ];
@@ -48,7 +49,7 @@ const slides = [
         </p>
         <div class="cta-row">
           <a class="btn btn-primary" href="/faq/">What is TAK?</a>
-          <a class="btn btn-ghost" href="/plugins/">Browse plugins</a>
+          <a class="btn btn-ghost" href="/plugins/">Browse TAKwerx plugins</a>
         </div>
       </div>
     </div>
@@ -93,6 +94,20 @@ const slides = [
           </a>
         ))}
       </div>
+
+      <section class="tw-band">
+        <div>
+          <span class="tw-kicker">Built in the open</span>
+          <h2>TAKwerx</h2>
+          <p>Free, open-source TAK software from a working first responder: the server, the plugins, and the place to report what breaks.</p>
+          <a class="btn btn-ghost" href="/takwerx/">What TAKwerx is</a>
+        </div>
+        <div class="tw-band-links">
+          <a href="/infra-tak/"><strong>infra-TAK</strong><span>The whole TAK stack from one browser console</span></a>
+          <a href="/plugins/"><strong>ATAK plugins</strong><span>{plugins.length} plugins, one Market to install them</span></a>
+          <a href="/takwerx/#report"><strong>Report a problem</strong><span>Straight to the right issue tracker</span></a>
+        </div>
+      </section>
 
       <h2 class="section-title"><b>02</b> Watch</h2>
       <div class="video-grid">

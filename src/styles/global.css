@@ -538,3 +538,48 @@ main { padding: 56px 0 80px; }
   .domains .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
   .domain { padding: 12px 0; font-size: 0.68rem; }
 }
+
+/* ---------- TAKwerx hub ---------- */
+.tw-hubs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 36px 0 8px; }
+@media (max-width: 980px) { .tw-hubs { grid-template-columns: 1fr; } }
+.tw-hub {
+  display: flex; flex-direction: column; gap: 10px; padding: 26px; text-decoration: none; color: var(--text); position: relative;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  background: linear-gradient(var(--grid) 1px, transparent 1px) 0 0 / 24px 24px, linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0 / 24px 24px, var(--surface);
+  transition: border-color .15s, background-color .15s;
+}
+.tw-hub::before { content: ""; position: absolute; left: -1px; right: -1px; top: -1px; height: 3px; background: var(--accent); }
+.tw-hub:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); }
+.tw-hub h2 { margin: 0; font-family: var(--display); text-transform: uppercase; font-size: 2rem; line-height: 1; letter-spacing: 0.01em; }
+.tw-hub p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.6; flex: 1; }
+.tw-kicker { font: 500 0.68rem var(--mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+.tw-stat { font: 0.74rem var(--mono); color: var(--muted); letter-spacing: 0.04em; padding-top: 12px; border-top: 1px dashed var(--border); }
+.tw-stat b { color: var(--text); font-weight: 700; }
+
+.tw-report { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: start; }
+@media (max-width: 980px) { .tw-report { grid-template-columns: 1fr; gap: 20px; } }
+.tw-h4 { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin: 18px 0 6px; }
+.tw-picker { display: flex; flex-direction: column; gap: 12px; padding: 22px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+.tw-picker label { font: 500 0.7rem var(--mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.tw-picker select {
+  font: 500 0.95rem var(--font); color: var(--text); background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 12px; appearance: auto;
+}
+.tw-picker .btn { justify-content: center; border: 0; cursor: pointer; }
+.tw-browse { font-size: 0.86rem; color: var(--accent); text-decoration: none; }
+
+.tw-foot { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; margin-top: 56px; padding: 26px; border: 1px dashed var(--border); border-radius: var(--radius); }
+.tw-foot p { margin: 6px 0 0; color: var(--muted); max-width: 60ch; }
+
+/* home: TAKwerx band */
+.tw-band { margin-top: 56px; display: grid; grid-template-columns: 1fr 1.6fr; gap: 32px; align-items: center; padding: 30px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); position: relative; }
+.tw-band::before { content: ""; position: absolute; left: -1px; top: -1px; bottom: -1px; width: 3px; background: var(--accent); }
+.tw-band h2 { font-family: var(--display); text-transform: uppercase; font-size: 2.1rem; line-height: 1; margin: 8px 0 10px; }
+.tw-band p { color: var(--muted); margin: 0 0 18px; }
+.tw-band-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.tw-band-links a { display: block; padding: 16px; border: 1px solid var(--border); border-radius: var(--radius); text-decoration: none; color: var(--text); background: var(--bg); }
+.tw-band-links a:hover { border-color: var(--accent); }
+.tw-band-links strong { display: block; font-family: var(--display); text-transform: uppercase; font-size: 1.25rem; line-height: 1.05; }
+.tw-band-links span { display: block; font: 0.7rem var(--mono); color: var(--muted); letter-spacing: 0.04em; margin-top: 6px; }
+@media (max-width: 980px) { .tw-band { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .tw-band-links { grid-template-columns: 1fr; } }
