@@ -529,3 +529,12 @@ main { padding: 56px 0 80px; }
 }
 
 .field { margin: 0; }
+
+/* discipline strip: one line per label, evenly spread */
+.domains .wrap { justify-content: space-between; gap: 6px 24px; }
+.domain { flex: 0 0 auto; padding: 16px 0; white-space: nowrap; }
+@media (max-width: 1100px) { .domains .wrap { justify-content: flex-start; gap: 0 28px; } }
+@media (max-width: 640px) {
+  .domains .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+  .domain { padding: 12px 0; font-size: 0.68rem; }
+}
