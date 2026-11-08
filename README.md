@@ -15,7 +15,6 @@ Every page is one Markdown file in `src/pages/`:
 | `infra-tak.md` | infra-TAK — install guide, requirements, video |
 | `plugins.astro` | ATAK plugins (PLSS Grid downloads + guide) |
 | `takwerx.astro` | TAKwerx hub: infra-TAK, plugins, CloudTAK plugins, issue picker |
-| `california-tak-resources.md` | California resources |
 | `links.md` | Link/logo grid |
 | `shields.md` | Shields |
 

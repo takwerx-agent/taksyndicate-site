@@ -16,7 +16,7 @@ The military version is called the Tactical Assault Kit while the civilian versi
 
 TAK is largely being used in federal law enforcement, dignitary protection and to a lesser degree in the fire service. State deployments are starting to take hold in Colorado and Texas. At a local level counties and cities are seeing the benefit of TAK as a method to better manage their local incidents and have the ability to collaborate on a common platform with federal entities like the FBI. The Coconino County Arizona Sheriff Search & Rescue Team is leveraging TAK as way to better manage their search operations.   
 
-On the fire service front, the United States Forest Service is in the beginning stages of building a WildFire TAK (WF-TAK) deployment to meet the needs of the [Dingell Act](https://www.fs.usda.gov/science-technology/fire/technology/law/tracking). The State of Colorado Center of Excellence is leading this project and more information can be found [here](https://www.cofiretech.org/feature-projects/team-awareness-kit-tak). At a local level the State of Colorado, Corona Fire Department and the Youngseville Fire Department have been deploying TAK as an all hazards tool. [The TAK Syndicate](https://www.youtube.com/channel/UCwQGzHkLVJiNzJJvh3lLGmA) and [State of Colorado Center of Excellence](https://www.youtube.com/@coetak) YouTube channels have a large library of videos showing how TAK can be integrated into the fire service. 
+On the fire service front, COTAK, the State of Colorado's TAK program run by the Colorado Center of Excellence, is leading the way; more information can be found [here](https://www.cofiretech.org/feature-projects/team-awareness-kit-tak). At a local level the State of Colorado, Corona Fire Department and the Youngseville Fire Department have been deploying TAK as an all hazards tool. [The TAK Syndicate](https://www.youtube.com/channel/UCwQGzHkLVJiNzJJvh3lLGmA) and [State of Colorado Center of Excellence](https://www.youtube.com/@coetak) YouTube channels have a large library of videos showing how TAK can be integrated into the fire service. 
 
 TAK has seen success supporting EMS support at large events such as the [Outside Lands Music Festival](https://www.sfoutsidelands.com/) in San Francisco. This [video](https://www.youtube.com/watch?v=QaVy15l2mxM) from Greg Albrecht explains it well.
 
@@ -26,15 +26,14 @@ TAK makes its biggest impact with dismounted resource tracking and collaboration
 
 ### What are the different versions of TAK?
 
-Android - ATAK
-
-iOS - iTAK
-
-Windows - WinTAK
-
-Browser - WebTAK
-
-Virtual Reality - VR-TAK
+| Platform | TAK clients |
+|---|---|
+| Android | ATAK |
+| iOS | iTAK, TAK Aware |
+| Windows | WinTAK |
+| Windows & Linux | TAKX |
+| Browser | WebTAK, [CloudTAK](https://github.com/dfpc-coe/CloudTAK) |
+| Virtual Reality | VR-TAK |
 
 ### Where do I get ATAK/WinTAK and associated Plugins?
 
@@ -48,11 +47,15 @@ The civilian version of ATAK and publicly released plugins can be downloaded at 
 
 The Play Store version does not come bundled with a few plugins that the version you will get from TAK.gov due to size limits from the playstore. 
 
-Third Party Plugins do exist and are typically available directly from an integrator.
+Third-party plugins are typically available directly from their developer or integrator. The free [TAKwerx Market](/plugins/takwerx-market/) plugin lists the [TAKwerx plugins](/plugins/) and listed community plugins inside ATAK, installs the build that matches your ATAK version, and keeps them updated.
 
-### Where can I get iTAK?
+### Where can I get iTAK and TAK Aware?
 
-iTAK can be downloaded from the [Apple app store](https://apps.apple.com/us/app/itak/id1561656396).  
+iTAK can be downloaded from the [Apple App Store](https://apps.apple.com/us/app/itak/id1561656396).
+
+TAK Aware, a lightweight iOS TAK client from Flight Tactics, is also on the [Apple App Store](https://apps.apple.com/us/app/tak-aware/id6738631659).
+
+
 iTAK is still in beta and you will be limited in comparison to what ATAK offers.
 
 ### What is a Plugin?
@@ -69,9 +72,11 @@ A TAK Server can also be used as host for data to be shared and stored between u
 
 There are several options for a TAK Server. 
 
-The official TAK Server from the federal government is available for download at [www.TAK.gov](http://www.tak.gov). You can deploy this in your own environment as you see fit. Here is a [helpful tutorial](https://mytecknet.com/lets-build-a-tak-server/) to explain the ins and outs of TAK Server. 
+The official TAK Server from the federal government is available for download at [www.TAK.gov](http://www.tak.gov). You can deploy this in your own environment as you see fit. Here is a [helpful tutorial](https://mytecknet.com/lets-build-a-tak-server/) to explain the ins and outs of TAK Server.
 
-A variety of vendors offer TAK Server as a Service. You can leave it to them to manage your deployment. A list of vendors in no particular order of preference; Realm Alliance, Chesapeake Technology International, PAR Govt Sit(x), RaytheonBBN, VK Integrated Systems, GoTAK and Syzygy. Free TAK Server is another offering from the Free TAK Team that you can deploy in your own environment. All of these vendors are listed on the [Links page](/links/).
+[infra-TAK](/infra-tak/) is a free, open-source web console that deploys and manages TAK Server in your own environment, along with Authentik, TAK Portal, SSL, CloudTAK, MediaMTX video and Node-RED. Upload the TAK Server package from TAK.gov and run the rest from the browser.
+
+A variety of vendors offer TAK Server as a Service. You can leave it to them to manage your deployment. A list of vendors in no particular order of preference; Realm Alliance, Parsons, Booz Allen, RaytheonBBN, EO-TAK, GoTAK and Syzygy. Free TAK Server is another offering from the Free TAK Team that you can deploy in your own environment. All of these vendors are listed on the [Links page](/links/).
 
 ### Does TAK work without a cellular connection?
 
@@ -90,10 +95,6 @@ While the TAK applications are free from the federal government the costs associ
 ### Who are the vendors listed on the links tab?
 
 The links page is meant to be a town square where vendors who work in the TAK space can be seen. A listing is not an endorsement and there are no financial interests.
-
-### What is in the Resources Tab?
-
-The resources tab is a link to a google drive that is full of publicly available data such as base maps, streaming and static map data elements,  wildfire specific maps and training material. The folder can also be reached at [http://maps.takserver.us](http://maps.takserver.us)
 
 ### Where can I collaborate with other TAK users?
 
