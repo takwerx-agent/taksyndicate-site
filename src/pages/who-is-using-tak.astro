@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+const MAP = 'https://www.google.com/maps/d/embed?mid=1l63m3svzm2X8VyNY2UNvKEl6kVYnqCA';
+---
+<Base title="Who’s using TAK" description="A live map of agencies and organizations running TAK in the field.">
+  <main id="main" class="map-page">
+    <div class="map-bar">
+      <h1>Who’s using TAK</h1>
+      <p>Agencies and organizations running TAK in the field.</p>
+      <a class="map-open" href={MAP.replace('/embed?', '/viewer?')} target="_blank" rel="noopener">Open in Google Maps ↗</a>
+    </div>
+    <iframe class="map-full" src={MAP} title="Map of organizations deploying TAK" allowfullscreen></iframe>
+  </main>
+</Base>

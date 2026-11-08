@@ -5,10 +5,10 @@ import { plugins, community, featured } from '../lib/plugins.js';
 const GH = 'https://github.com/takwerx';
 
 const cloudtak = [
-  { name: 'Dispatcher', href: `${GH}/cloudtak-dispatcher-plugin`, cta: 'Source & changelog on GitHub →',
+  { name: 'Dispatcher', tag: 'TAK Portal · GitHub', href: `${GH}/cloudtak-dispatcher-plugin`, cta: 'Source & changelog on GitHub →',
     blurb: 'Create and manage incidents on the map, organize them under named events, assign responders, and notify them through mission chat and GeoChat.' },
-  { name: 'TAK Simulator', href: `${GH}/infra-TAK/blob/main/docs/SIMULATOR.md`, cta: 'How the Simulator works →',
-    blurb: 'A director panel inside CloudTAK for live exercises, demos and load tests: scripted units on an isolated simulation channel, eight ready-made scenarios, and a clean stop that removes everything. Deployed as an infra-TAK module.' },
+  { name: 'TAK Simulator', tag: 'infra-TAK only', href: `${GH}/infra-TAK/blob/main/docs/SIMULATOR.md`, cta: 'How the Simulator works →',
+    blurb: 'A director panel inside CloudTAK for live exercises, demos and load tests: scripted units on an isolated simulation channel, eight ready-made scenarios, and a clean stop that removes everything. Requires infra-TAK with CloudTAK on the same server.' },
 ];
 
 const more = [
@@ -71,17 +71,18 @@ const issueTargets = [
         <a class="tw-hub" href="/plugins/">
           <span class="tw-kicker">ATAK &amp; CloudTAK</span>
           <h2>Plugins</h2>
-          <p>ATAK plugins for maps, weather, fire, alerts, airspace, cameras and comms, installed and updated from inside ATAK by {featured?.name}. Plus CloudTAK plugins for dispatch and live exercises.</p>
+          <p>ATAK plugins for maps, weather, fire, alerts, airspace, cameras and comms, installed and updated from inside ATAK by {featured?.name}. Plus CloudTAK plugins for dispatch and, with infra-TAK, live exercises.</p>
           <span class="tw-stat"><b>{plugins.length}</b> ATAK · <b>{cloudtak.length}</b> CloudTAK · <b>{community.length}</b> community</span>
           <span class="repo-cta">Browse ATAK plugins →</span>
         </a>
       </div>
 
       <h2 class="section-title" id="cloudtak"><b>01</b> CloudTAK plugins</h2>
-      <p class="section-note">Running infra-TAK? Install and update these straight from the <strong>TAK Portal marketplace</strong> — no files to download. Everyone else can get them from GitHub.</p>
+      <p class="section-note"><strong>Dispatcher</strong> installs and updates from the <strong>TAK Portal marketplace</strong>, or from GitHub for any CloudTAK. <strong>TAK Simulator</strong> needs its engine running beside CloudTAK, so it comes only with <a href="/infra-tak/">infra-TAK</a>: deploy it from the console’s marketplace.</p>
       <div class="card-grid">
         {cloudtak.map((c) => (
           <a class="card repo-card" href={c.href}>
+            <span class="card-num">{c.tag}</span>
             <h3>{c.name}</h3>
             <p>{c.blurb}</p>
             <span class="repo-cta">{c.cta}</span>

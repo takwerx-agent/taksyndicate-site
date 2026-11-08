@@ -10,7 +10,7 @@ Every page is one Markdown file in `src/pages/`:
 | File | Page |
 |---|---|
 | `index.astro` | Home (hero + cards + videos) |
-| `who-is-using-tak.md` | Organizations deploying TAK (map embed) |
+| `who-is-using-tak.astro` | Organizations deploying TAK (map embed) |
 | `faq.md` | FAQ (auto-generates its sidebar from `###` headings) |
 | `infra-tak.md` | infra-TAK — install guide, requirements, video |
 | `plugins.astro` | ATAK plugins (PLSS Grid downloads + guide) |
