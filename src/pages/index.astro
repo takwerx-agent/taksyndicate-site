@@ -20,6 +20,17 @@ const domains = [
   ['Planned events',  'var(--d-events)'],
 ];
 const videos = ['CSbLibPAcQk', 'tojMXYMVdyw'];
+// Screenshots from real incidents (from the original site's slideshow). [image, caption, discipline color]
+const slides = [
+  ['/images/field/01.webp', 'Wildfire: aircraft video beside the map',          'var(--d-fire)'],
+  ['/images/field/02.webp', 'Wildfire: a hotspot camera paired to the fire',    'var(--d-fire)'],
+  ['/images/field/03.webp', 'Wildfire: divisions along the perimeter',          'var(--d-fire)'],
+  ['/images/field/04.webp', 'Planned event: every agency on one map',           'var(--d-le)'],
+  ['/images/field/05.webp', 'Wildfire: the perimeter on a topo base map',       'var(--d-fire)'],
+  ['/images/field/06.webp', 'Hurricane Ian: the advisory on the map',           'var(--d-water)'],
+  ['/images/field/07.webp', 'Backcountry: trails on a topo base map',           'var(--d-sar)'],
+  ['/images/field/08.webp', 'Swift-water rescue: units along the channel',      'var(--d-water)'],
+];
 ---
 <Base>
   <section class="hero">
@@ -35,80 +46,25 @@ const videos = ['CSbLibPAcQk', 'tojMXYMVdyw'];
         </p>
         <div class="cta-row">
           <a class="btn btn-primary" href="/faq/">What is TAK?</a>
-          <a class="btn btn-ghost" href="/who-we-are/">Who we are</a>
+          <a class="btn btn-ghost" href="/plugins/">Browse plugins</a>
         </div>
       </div>
 
-      <figure class="cop" aria-label="Illustration of a shared operating picture with several incidents on one map">
-        <div class="cop-bar"><span>One map, many disciplines</span><span>Illustration</span></div>
-        <svg viewBox="0 0 520 330" role="img" aria-hidden="true" style="font-family: var(--mono)">
-          <defs>
-            <pattern id="g" width="26" height="26" patternUnits="userSpaceOnUse">
-              <path d="M26 0H0V26" fill="none" style="stroke: var(--grid)" />
-            </pattern>
-            <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-              <line x1="0" y1="0" x2="0" y2="6" style="stroke: var(--d-sar)" stroke-width="1.2" opacity=".5" />
-            </pattern>
-          </defs>
-          <rect width="520" height="330" fill="url(#g)" />
-          <!-- terrain contours -->
-          <g fill="none" style="stroke: var(--muted)" opacity=".22" stroke-width="1">
-            <path d="M-10 70 C80 40 150 90 230 60 S380 20 530 60" />
-            <path d="M-10 95 C70 70 160 115 240 88 S390 50 530 88" />
-            <path d="M40 300 C90 250 170 260 200 230 S260 170 330 190 S440 260 530 230" />
-            <path d="M70 330 C110 285 180 290 215 262 S280 210 335 222 S450 290 530 262" />
-          </g>
-          <!-- river -->
-          <path d="M-10 190 C60 170 110 210 170 195 S270 150 320 165 S430 215 530 200" fill="none" style="stroke: var(--d-water)" stroke-width="3" opacity=".55" />
-          <!-- roads -->
-          <g fill="none" style="stroke: var(--muted)" opacity=".35" stroke-width="1.5" stroke-dasharray="1 0">
-            <path d="M0 250 L520 120" /><path d="M300 0 L360 330" />
-          </g>
-
-          <!-- wildfire perimeter -->
-          <path d="M70 52 L128 36 L170 58 L182 104 L150 132 L96 128 L62 96 Z" style="fill: var(--d-fire); stroke: var(--d-fire)" fill-opacity=".14" stroke-width="2" stroke-dasharray="6 4" />
-          <text x="76" y="86" font-size="10" style="fill: var(--d-fire)" letter-spacing=".08em">RIDGE FIRE</text>
-          <text x="76" y="99" font-size="8.5" style="fill: var(--muted)">412 AC · 30%</text>
-
-          <!-- hazmat plume -->
-          <path d="M398 74 L500 30 L506 110 Z" style="fill: var(--d-hazmat)" fill-opacity=".14" />
-          <path d="M398 74 L500 30 M398 74 L506 110" style="stroke: var(--d-hazmat)" stroke-width="1.2" stroke-dasharray="3 3" />
-          <polygon points="398,64 408,74 398,84 388,74" style="fill: var(--d-hazmat)" />
-          <text x="410" y="96" font-size="9" style="fill: var(--d-hazmat)" letter-spacing=".08em">HAZMAT · NH3</text>
-
-          <!-- active threat with cordon -->
-          <circle cx="250" cy="250" r="36" fill="none" style="stroke: var(--d-threat)" stroke-width="1.5" stroke-dasharray="4 4" />
-          <polygon points="250,238 262,250 250,262 238,250" style="fill: var(--d-threat)" />
-          <text x="292" y="282" font-size="9" style="fill: var(--d-threat)" letter-spacing=".08em">LOCKDOWN</text>
-
-          <!-- SAR search segment -->
-          <rect x="400" y="200" width="92" height="70" style="stroke: var(--d-sar)" fill="url(#hatch)" stroke-width="1.5" />
-          <text x="404" y="286" font-size="9" style="fill: var(--d-sar)" letter-spacing=".08em">SEG 4B</text>
-
-          <!-- friendly units -->
-          <g style="fill: var(--surface); stroke: var(--accent)" stroke-width="1.6">
-            <rect x="190" y="112" width="22" height="14" /><rect x="352" y="96" width="22" height="14" />
-            <rect x="196" y="282" width="22" height="14" /><rect x="438" y="168" width="22" height="14" />
-            <rect x="120" y="160" width="22" height="14" />
-          </g>
-          <g font-size="8.5" style="fill: var(--text)">
-            <text x="216" y="123">E-21</text><text x="378" y="107">HM-1</text>
-            <text x="222" y="293">SWAT</text><text x="464" y="179">K9-2</text>
-            <text x="146" y="171">M-7</text>
-          </g>
-          <!-- shared link lines -->
-          <g style="stroke: var(--accent)" opacity=".35" stroke-width="1" stroke-dasharray="2 4">
-            <path d="M212 119 L352 103" /><path d="M142 167 L196 289" /><path d="M374 103 L438 175" />
-          </g>
-          <text x="10" y="322" font-size="8" style="fill: var(--muted)" letter-spacing=".06em">38.5816° N  121.4944° W</text>
-        </svg>
-        <figcaption class="cop-foot">
-          <span style="color: var(--accent)">Responders</span>
-          <span style="color: var(--d-fire)">Fire</span>
-          <span style="color: var(--d-hazmat)">Hazmat</span>
-          <span style="color: var(--d-threat)">Threat</span>
-          <span style="color: var(--d-sar)">SAR</span>
-        </figcaption>
+      <figure class="cop field" aria-roledescription="carousel" aria-label="TAK in the field">
+        <div class="cop-bar"><span>TAK in the field</span><span class="field-count"><b>●</b> <span>1</span> / {slides.length}</span></div>
+        <div class="field-stage">
+          {slides.map(([src, cap, tag], i) => (
+            <figure class:list={['field-slide', i === 0 && 'on']} aria-hidden={i === 0 ? undefined : 'true'}>
+              <img src={src} alt={cap} width="1600" height="720" loading={i === 0 ? 'eager' : 'lazy'} />
+              <figcaption style={`--c: ${tag}`}><i></i>{cap}</figcaption>
+            </figure>
+          ))}
+          <button class="field-nav prev" type="button" aria-label="Previous">‹</button>
+          <button class="field-nav next" type="button" aria-label="Next">›</button>
+        </div>
+        <div class="field-dots">
+          {slides.map((_, i) => <button type="button" aria-label={`Slide ${i + 1}`} aria-current={i === 0 ? 'true' : undefined}></button>)}
+        </div>
       </figure>
     </div>
 
@@ -146,4 +102,29 @@ const videos = ['CSbLibPAcQk', 'tojMXYMVdyw'];
       </div>
     </div>
   </main>
+  <script is:inline>
+    (function () {
+      var root = document.querySelector('.field'); if (!root) return;
+      var slides = root.querySelectorAll('.field-slide'), dots = root.querySelectorAll('.field-dots button');
+      var count = root.querySelector('.field-count span'), i = 0, timer = null;
+      var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function show(n) {
+        i = (n + slides.length) % slides.length;
+        slides.forEach(function (s, k) { s.classList.toggle('on', k === i); s.setAttribute('aria-hidden', k === i ? 'false' : 'true'); });
+        dots.forEach(function (d, k) { if (k === i) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
+        count.textContent = i + 1;
+        var next = slides[(i + 1) % slides.length].querySelector('img'); next.loading = 'eager';
+      }
+      function play() { if (!still) { stop(); timer = setInterval(function () { show(i + 1); }, 5500); } }
+      function stop() { clearInterval(timer); }
+      root.querySelector('.prev').onclick = function () { show(i - 1); play(); };
+      root.querySelector('.next').onclick = function () { show(i + 1); play(); };
+      dots.forEach(function (d, k) { d.onclick = function () { show(k); play(); }; });
+      root.addEventListener('mouseenter', stop); root.addEventListener('mouseleave', play);
+      var x0 = null;
+      root.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+      root.addEventListener('touchend', function (e) { if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) { show(i + (dx < 0 ? 1 : -1)); play(); } x0 = null; });
+      play();
+    })();
+  </script>
 </Base>

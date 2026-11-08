@@ -1,0 +1,79 @@
+---
+import Base from '../layouts/Base.astro';
+
+// One card per shield. `team` is the big name, `league` the small line under it.
+// Add a shield: drop a transparent .webp in public/images/shields/ and add a row.
+const shields = [
+  { img: 'img-061', team: 'TAK Texas',            league: 'US · State' },
+  { img: 'img-064', team: 'TAK UK',               league: 'United Kingdom' },
+  { img: 'img-065', team: 'TAK-SA',               league: 'South Africa' },
+  { img: 'img-070', team: 'Corona Fire',          league: 'Fire department' },
+  { img: 'img-063', team: 'TAK California',       league: 'US · State' },
+  { img: 'img-077', team: 'COTAK',                league: 'US · Colorado' },
+  { img: 'img-076', team: 'TAK Connecticut',      league: 'US · State' },
+  { img: 'img-071', team: 'TAK Tennessee',        league: 'US · State' },
+  { img: 'img-073', team: 'Frenchy TAK',          league: 'France' },
+  { img: 'img-075', team: 'VK SYS',               league: 'Industry', href: 'https://vkintsys.com/' },
+  { img: 'img-078', team: 'KWESST',               league: 'Industry · Canada', href: 'https://www.kwesst.com/' },
+  { img: 'img-079', team: 'Samsung TAK',          league: 'Industry', href: 'https://www.samsung.com/us/business/solutions/industries/government/' },
+  { img: 'img-074', team: 'WFTAK',                league: 'Wildland fire' },
+  { img: 'img-069', team: 'TAK Spring Hill',      league: 'Local' },
+  { img: 'img-072', team: 'Tough Stump',          league: 'Industry' },
+  { img: 'img-062', team: 'PAR TAK',              league: 'Industry' },
+  { img: 'img-066', team: 'TAK Arizona',          league: 'US · State' },
+  { img: 'img-068', team: 'TAK South Australia',  league: 'Australia · State' },
+  { img: 'img-067', team: 'TAK Philippines',      league: 'Philippines' },
+  { img: 'img-055', team: 'TAK-J',                league: 'Japan' },
+  { img: 'img-058', team: 'Cloud TAK',            league: 'Community' },
+  { img: 'img-059', team: 'NCTAK',                league: 'US · North Carolina' },
+  { img: 'img-060', team: 'GEOTAK',               league: 'Community' },
+  { img: 'img-057', team: 'Help Now',             league: 'Community' },
+  { img: 'img-056', team: 'TAK Australia',        league: 'Australia' },
+];
+---
+<Base title="Shields" description="The TAK community's shields — states, countries, agencies and teams that fly the TAK eagle.">
+  <main id="main">
+    <div class="wrap">
+      <div class="page-head">
+        <h1>Shields</h1>
+        <p>States, countries, agencies and teams that fly the TAK eagle. {shields.length} and counting.</p>
+      </div>
+    </div>
+
+    <div class="cards-wrap">
+      <div class="bb-grid">
+        {shields.map((s, i) => {
+          const Tag = s.href ? 'a' : 'div';
+          return (
+            <Tag class="bb-card" href={s.href} target={s.href ? '_blank' : undefined} rel={s.href ? 'noopener' : undefined}>
+              <span class="bb-num">#{String(i + 1).padStart(2, '0')}</span>
+              <span class="bb-window">
+                <img src={`/images/shields/${s.img}.webp`} alt={`${s.team} shield`} loading={i < 12 ? 'eager' : 'lazy'} />
+              </span>
+              <span class="bb-plate">
+                <strong>{s.team}</strong>
+                <small>{s.league}{s.href && ' ↗'}</small>
+              </span>
+            </Tag>
+          );
+        })}
+      </div>
+    </div>
+  </main>
+
+  <script is:inline>
+    // A little tilt and foil shine under the pointer, like holding the card.
+    if (window.matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches) {
+      document.querySelectorAll('.bb-card').forEach(function (c) {
+        c.addEventListener('pointermove', function (e) {
+          var r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+          c.style.setProperty('--rx', ((0.5 - y) * 10).toFixed(2) + 'deg');
+          c.style.setProperty('--ry', ((x - 0.5) * 12).toFixed(2) + 'deg');
+          c.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+          c.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+        });
+        c.addEventListener('pointerleave', function () { c.style.removeProperty('--rx'); c.style.removeProperty('--ry'); });
+      });
+    }
+  </script>
+</Base>
