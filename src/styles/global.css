@@ -583,3 +583,11 @@ main { padding: 56px 0 80px; }
 .tw-band-links span { display: block; font: 0.7rem var(--mono); color: var(--muted); letter-spacing: 0.04em; margin-top: 6px; }
 @media (max-width: 980px) { .tw-band { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .tw-band-links { grid-template-columns: 1fr; } }
+
+.tw-coffee { flex: none; display: block; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); transition: transform .2s, border-color .2s; }
+.tw-coffee img { display: block; width: 150px; height: 150px; object-fit: cover; }
+.tw-coffee:hover { transform: rotate(-2deg) scale(1.03); border-color: var(--accent); }
+.tw-foot { justify-content: flex-start; }
+.tw-foot-text { flex: 1; min-width: 240px; }
+.tw-foot .cta-row { flex: none; }
+@media (max-width: 640px) { .tw-coffee img { width: 120px; height: 120px; } }
