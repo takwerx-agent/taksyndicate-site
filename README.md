@@ -18,9 +18,7 @@ Every page is one Markdown file in `src/pages/`:
 | `tools.astro` | takwerx project catalog |
 | `california-tak-resources.md` | California resources |
 | `links.md` | Link/logo grid |
-| `resources.md` | Resources (Drive folder embed) |
 | `shields.md` | Shields |
-| `ahimta-symposium-team.md` | AHIMTA team |
 
 `plugins.astro` and `tools.astro` hold their data in an array at the top of the file —
 add a plugin or repo by adding one entry, no HTML needed.

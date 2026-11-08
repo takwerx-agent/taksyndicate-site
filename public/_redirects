@@ -4,3 +4,7 @@
 /mediamtx-video-server /tools/       301
 /mediamtx-video-server/* /tools/     301
 /home                  /             301
+/ahimta-symposium-team   /             301
+/ahimta-symposium-team/* /             301
+/resources               /plugins/     301
+/resources/*             /plugins/     301

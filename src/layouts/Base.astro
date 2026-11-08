@@ -14,9 +14,9 @@ const full = title ? `${title} — The TAK Syndicate` : 'The TAK Syndicate';
   <meta property="og:title" content={full} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content={new URL('/brand/icon-512.png', Astro.site ?? Astro.url).href} />
   <link rel="canonical" href={Astro.url.href} />
   <link rel="sitemap" href="/sitemap-index.xml" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="/favicon-32.png" sizes="32x32" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />

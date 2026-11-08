@@ -10,16 +10,14 @@ const links = [
   ['/tools/', 'Tools'],
   ['/california-tak-resources/', 'California'],
   ['/links/', 'Links'],
-  ['/resources/', 'Resources'],
   ['/shields/', 'Shields'],
-  ['/ahimta-symposium-team/', 'AHIMTA'],
 ];
 const isActive = (href) => href === '/' ? pathname === '/' : pathname.startsWith(href);
 ---
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="/">
-      <span class="brand-mark">TS</span>
+      <img class="brand-logo" src="/brand/logo-112.webp" alt="" width="57" height="56" />
       <span>The TAK Syndicate</span>
     </a>
     <button class="icon-btn nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav">
