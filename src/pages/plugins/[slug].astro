@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { plugins, disciplines, mb, readmeHtml } from '../../lib/plugins.js';
+import meta from '../../data/plugin-meta.json';
 
 export function getStaticPaths() {
   return plugins.map((p) => ({ params: { slug: p.slug }, props: { p } }));
@@ -8,6 +9,8 @@ export function getStaticPaths() {
 const { p } = Astro.props;
 const repoUrl = `https://github.com/${p.repo}`;
 const s = p.sections;
+const m = meta.plugins[p.slug] ?? {};
+const shots = m.hideShots ? [] : p.shots;
 const reqs = [['Equipment required', s.requires], ['Works with', s.supports], ['Network', s.ports]]
   .filter(([, t]) => t && !/^none\.?$/i.test(t.trim()));
 ---
@@ -46,11 +49,22 @@ const reqs = [['Equipment required', s.requires], ['Works with', s.supports], ['
         </aside>
 
         <div class="plug-main">
-          {p.shots.length > 0 && (
+          {m.video && (
             <section>
-              <h2 class="section-title" style="margin-top:0"><b>01</b> Screenshots</h2>
+              <h2 class="section-title" style="margin-top:0"><b>01</b> Watch</h2>
+              <div class="embed" style="margin-top:0">
+                <iframe src={`https://www.youtube-nocookie.com/embed/${m.video}`} loading="lazy"
+                  title={`${p.name} video`} allowfullscreen
+                  allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              </div>
+            </section>
+          )}
+
+          {shots.length > 0 && (
+            <section>
+              <h2 class="section-title" style={m.video ? undefined : "margin-top:0"}><b>01</b> Screenshots</h2>
               <div class="shots">
-                {p.shots.map((sh, i) => (
+                {shots.map((sh, i) => (
                   <a class="shot" href={sh.src} target="_blank" rel="noopener">
                     <img src={sh.src} alt={sh.alt} width={sh.w} height={sh.h} loading={i < 3 ? 'eager' : 'lazy'} />
                     {sh.alt && <span>{sh.alt}</span>}
