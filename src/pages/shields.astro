@@ -1,6 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 
+// Public Turnstile site key for the "Submit your shield" form (the secret is a Worker secret).
+// 1x00000000000000000000AA is Cloudflare's always-pass test key: replace it with the real key.
+const TURNSTILE_SITE_KEY = '1x00000000000000000000AA';
+
 // One card per shield. `team` is the big name, `league` the small line under it.
 // Add a shield: drop a transparent .webp in public/images/shields/ and add a row.
 const shields = [
@@ -44,6 +48,47 @@ const shields = [
       <div class="page-head">
         <h1>Shields</h1>
         <p>States, countries, agencies and teams that fly the TAK eagle. {shields.length} and counting.</p>
+
+        <details class="ss" id="submit">
+          <summary class="btn btn-ghost">Submit your shield</summary>
+          <form class="ss-form" id="ss-form" novalidate>
+            <p class="ss-note">Send us your team's shield. We check each one by hand before it goes on this page. Your email is only used to reply to you.</p>
+            <div class="ss-grid">
+              <label><span class="ss-l">Team or shield name <b>*</b></span>
+                <input name="team" required maxlength="60" placeholder="e.g. TAK Ohio" autocomplete="organization" />
+              </label>
+              <label><span class="ss-l">Small line under the name</span>
+                <input name="area" maxlength="60" placeholder="e.g. US · State, Fire department" />
+              </label>
+              <label><span class="ss-l">Your name <b>*</b></span>
+                <input name="name" required maxlength="80" autocomplete="name" />
+              </label>
+              <label><span class="ss-l">Your email <b>*</b></span>
+                <input name="email" type="email" required maxlength="254" autocomplete="email" />
+              </label>
+              <label class="ss-wide"><span class="ss-l">Website (optional, linked from the card)</span>
+                <input name="site" type="url" maxlength="200" placeholder="https://example.org" />
+              </label>
+              <label class="ss-wide"><span class="ss-l">Comment</span>
+                <textarea name="comment" rows="3" maxlength="1000" placeholder="Who uses this shield? Anything we should know?"></textarea>
+              </label>
+              <label class="ss-wide"><span class="ss-l">Shield image <b>*</b></span>
+                <input name="shield" type="file" required accept="image/png,image/jpeg,image/webp" />
+                <small>PNG, JPEG or WebP, 2 MB or less. A transparent background looks best.</small>
+              </label>
+              <label class="ss-hp" aria-hidden="true">Fax <input name="fax" tabindex="-1" autocomplete="off" /></label>
+              <label class="ss-check ss-wide">
+                <input type="checkbox" name="rights" value="yes" required />
+                I made this shield or I have permission to share it, and it may be shown on this page.
+              </label>
+            </div>
+            <div class="ss-ts" id="ss-ts"></div>
+            <div class="ss-foot">
+              <button class="btn btn-primary" type="submit" id="ss-send">Send shield</button>
+              <p class="ss-msg" id="ss-msg" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+        </details>
       </div>
     </div>
 
@@ -67,6 +112,62 @@ const shields = [
       </div>
     </div>
   </main>
+
+  <script is:inline define:vars={{ siteKey: TURNSTILE_SITE_KEY }}>
+    // Shield form. Turnstile loads only when the form is opened.
+    (function () {
+      var box = document.getElementById('submit'), form = document.getElementById('ss-form');
+      var msg = document.getElementById('ss-msg'), send = document.getElementById('ss-send');
+      var widget = null, loading = false;
+
+      function say(t, bad) { msg.textContent = t; msg.classList.toggle('bad', !!bad); }
+
+      function renderTs() {
+        if (widget !== null || !window.turnstile) return;
+        widget = window.turnstile.render('#ss-ts', { sitekey: siteKey, action: 'shield-submit', theme: document.documentElement.dataset.theme === 'light' ? 'light' : 'dark' });
+      }
+      window.ssTurnstileReady = renderTs;
+
+      function loadTs() {
+        if (loading) return renderTs();
+        loading = true;
+        var s = document.createElement('script');
+        s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=ssTurnstileReady';
+        s.async = true; s.defer = true;
+        document.head.appendChild(s);
+      }
+
+      box.addEventListener('toggle', function () { if (box.open) loadTs(); });
+      if (location.hash === '#submit') { box.open = true; }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+        var f = form.shield.files[0];
+        if (!f) return say('Attach the shield image.', true);
+        if (f.size > 2 * 1024 * 1024) return say('The image is too large. The limit is 2 MB.', true);
+        if (!/^image\/(png|jpeg|webp)$/.test(f.type)) return say('Use a PNG, JPEG or WebP image.', true);
+        var data = new FormData(form);
+        if (!data.get('cf-turnstile-response')) return say('Complete the human check first.', true);
+
+        send.disabled = true; say('Sending…');
+        fetch('/api/shield-submit', { method: 'POST', body: data })
+          .then(function (r) { return r.json().catch(function () { return { ok: false, error: 'Something went wrong. Try again later.' }; }); })
+          .then(function (res) {
+            if (res.ok) {
+              form.reset(); say('Thank you. We got your shield and will look at it soon.');
+            } else {
+              say(res.error || 'Something went wrong. Try again later.', true);
+            }
+          })
+          .catch(function () { say('Could not reach the server. Try again later.', true); })
+          .finally(function () {
+            send.disabled = false;
+            if (window.turnstile && widget !== null) window.turnstile.reset(widget);
+          });
+      });
+    })();
+  </script>
 
   <script is:inline>
     // A little tilt and foil shine under the pointer, like holding the card.

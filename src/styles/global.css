@@ -486,6 +486,38 @@ main { padding: 56px 0 80px; }
 .bb-num { position: absolute; top: 13px; left: 13px; z-index: 1; font: 700 0.62rem var(--mono); color: #0d1722; background: rgba(255,255,255,.85); border: 1px solid rgba(13,23,34,.2); padding: 2px 5px; border-radius: 3px; }
 @media (max-width: 480px) { .bb-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
 
+/* "Submit your shield" form on the Shields page */
+.ss { margin-top: 18px; }
+.ss > summary { cursor: pointer; list-style: none; }
+.ss > summary::-webkit-details-marker { display: none; }
+.ss > summary::after { content: '+'; font-size: 1rem; line-height: 1; }
+.ss[open] > summary::after { content: '\2212'; }
+.ss-form { margin-top: 16px; max-width: 760px; min-width: 0; padding: 22px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+.ss-note { margin: 0 0 18px; color: var(--muted); font-size: 0.92rem; }
+.ss-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px 18px; }
+.ss-grid label { display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.ss-grid label { min-width: 0; }
+.ss-l b { color: var(--d-threat); font-weight: 400; }
+.ss-grid small { text-transform: none; letter-spacing: 0; font-family: var(--font); font-size: 0.8rem; }
+.ss-wide { grid-column: 1 / -1; }
+.ss-form input:not([type=checkbox]), .ss-form textarea {
+  font: inherit; font-family: var(--font); font-size: 0.95rem; text-transform: none; letter-spacing: 0;
+  color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 12px; width: 100%;
+}
+.ss-form textarea { resize: vertical; }
+.ss-form input:focus-visible, .ss-form textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+.ss-form input[type=file] { padding: 8px; }
+.ss-grid label.ss-check { flex-direction: row; align-items: flex-start; gap: 10px; font-family: var(--font); font-size: 0.88rem; letter-spacing: 0; text-transform: none; color: var(--text); }
+.ss-check input { margin-top: 3px; width: 16px; height: 16px; flex: none; accent-color: var(--accent); }
+.ss-hp { position: absolute !important; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.ss-ts { margin-top: 18px; min-height: 65px; }
+.ss-foot { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 14px; }
+.ss-foot .btn { cursor: pointer; }
+.ss-foot .btn:disabled { opacity: 0.6; cursor: wait; }
+.ss-msg { margin: 0; font-size: 0.9rem; color: var(--d-sar); }
+.ss-msg.bad { color: var(--d-threat); }
+@media (max-width: 600px) { .ss-grid { grid-template-columns: minmax(0, 1fr); } .ss-form { padding: 16px; } }
+
 /* ---------- home: field slideshow ---------- */
 .field-stage { position: relative; aspect-ratio: 20 / 9; background: #000; overflow: hidden; }
 .field-slide { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity .8s ease; }
