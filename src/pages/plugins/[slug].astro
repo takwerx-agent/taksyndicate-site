@@ -10,7 +10,8 @@ const { p } = Astro.props;
 const repoUrl = `https://github.com/${p.repo}`;
 const s = p.sections;
 const m = meta.plugins[p.slug] ?? {};
-const shots = m.hideShots ? [] : p.shots;
+// Only screenshots picked by hand (plugin-meta.json). The ones in the user guides weren't good enough.
+const shots = m.shots ?? [];
 // Number the sections that are present, in order.
 let n = 0;
 const num = () => String(++n).padStart(2, '0');
@@ -69,7 +70,7 @@ const reqs = [['Equipment required', s.requires], ['Works with', s.supports], ['
               <div class="shots">
                 {shots.map((sh, i) => (
                   <a class="shot" href={sh.src} target="_blank" rel="noopener">
-                    <img src={sh.src} alt={sh.alt} width={sh.w} height={sh.h} loading={i < 3 ? 'eager' : 'lazy'} />
+                    <img src={sh.src} alt={sh.alt} loading={i < 3 ? 'eager' : 'lazy'} />
                     {sh.alt && <span>{sh.alt}</span>}
                   </a>
                 ))}

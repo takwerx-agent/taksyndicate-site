@@ -7,7 +7,6 @@
 //   - takes name, version, description, icon and per-ATAK APK links from the catalog
 //   - sparse-clones the repo's README.md + docs/ into .cache/
 //   - compiles docs/user_manual/usermanual.typ to public/manuals/<repo>.pdf (needs `typst`)
-//   - copies the screenshots the USER_GUIDE uses, as WebP, to public/plugin-assets/<repo>/
 // Community plugins in the catalog are listed too, linking out to their own repos.
 // Output: src/data/plugins.json (read by src/pages/plugins/*).
 
@@ -22,7 +21,6 @@ const CATALOG_BASE = 'https://mapdepot.takwerx.org/depot';
 const OWNER = 'takwerx';
 const CACHE = path.join(ROOT, '.cache/plugins');
 const OUT_JSON = path.join(ROOT, 'src/data/plugins.json');
-const MAX_SHOTS = 10;
 const only = process.argv[2];
 
 const meta = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/plugin-meta.json'), 'utf8'));
@@ -111,37 +109,6 @@ async function buildManual(dir, repo) {
   }
 }
 
-async function screenshots(dir, repo) {
-  const guide = path.join(dir, 'docs/USER_GUIDE.md');
-  if (!fs.existsSync(guide)) return [];
-  const md = fs.readFileSync(guide, 'utf8');
-  const outDir = path.join(ROOT, 'public/plugin-assets', repo);
-  fs.mkdirSync(outDir, { recursive: true });
-  for (const f of fs.readdirSync(outDir)) if (/^\d+\.webp$/.test(f)) fs.rmSync(path.join(outDir, f));
-  const shots = [];
-  const seen = new Set();
-  // Markdown ![alt](src) and HTML <img src alt>, in document order, captioned by
-  // their alt text or else the guide heading they sit under.
-  const re = /^#{1,4}\s+(.+)$|!\[([^\]]*)\]\(([^)\s]+)|<img\b[^>]*?\bsrc="([^"]+)"[^>]*>/gm;
-  let heading = '';
-  for (const m of md.matchAll(re)) {
-    if (m[1]) { heading = m[1].replace(/[*_`]/g, '').trim(); continue; }
-    if (shots.length >= MAX_SHOTS) break;
-    const src = m[3] || m[4];
-    const alt = (m[2] ?? (m[0].match(/\balt="([^"]*)"/) || [])[1] ?? '').trim() || heading;
-    const rel = decodeURIComponent(src);
-    if (/^https?:/.test(rel) || seen.has(rel)) continue;
-    seen.add(rel);
-    const file = path.join(dir, 'docs', rel);
-    if (!fs.existsSync(file)) continue;
-    const name = `${String(shots.length + 1).padStart(2, '0')}.webp`;
-    const img = sharp(file).resize({ width: 1400, height: 1400, fit: 'inside', withoutEnlargement: true });
-    const info = await img.webp({ quality: 80 }).toFile(path.join(outDir, name));
-    shots.push({ src: `/plugin-assets/${repo}/${name}`, alt, w: info.width, h: info.height });
-  }
-  return shots;
-}
-
 async function saveIcon(iconPath, repo) {
   if (!/^icons\/[\w.-]+\.png$/.test(iconPath)) return null;
   const res = await fetch(`${CATALOG_BASE}/${iconPath}`);
@@ -193,7 +160,6 @@ for (const [pkg, rs] of byPkg) {
     icon: await saveIcon(newest.icon, slug),
     manual: await buildManual(dir, slug),
     guide: fs.existsSync(path.join(dir, 'docs/USER_GUIDE.md')) ? `https://github.com/${OWNER}/${slug}/blob/main/docs/USER_GUIDE.md` : null,
-    shots: await screenshots(dir, slug),
     sections: {
       purpose: readme['PURPOSE AND CAPABILITIES'] || '',
       status: readme['STATUS'] || '',

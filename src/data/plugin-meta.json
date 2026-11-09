@@ -1,9 +1,9 @@
 {
-  "_readme": "Hand-edited. Which disciplines each takwerx plugin serves (drives the filter chips on /plugins/), and the order plugins appear in. Tags: wildfire, hazmat, sar, le, ems, water, air, all, tools. Repos not listed here still appear, tagged 'all'. Optional: video (YouTube ID shown on the plugin page) and hideShots (true drops the screenshot strip).",
+  "_readme": "Hand-edited. Which disciplines each takwerx plugin serves (drives the filter chips on /plugins/), and the order plugins appear in. Tags: wildfire, hazmat, sar, le, ems, water, air, all, tools. Repos not listed here still appear, tagged 'all'. Optional: video (YouTube ID shown on the plugin page), shots (screenshots you supply: [{ \"src\": \"/images/plugins/<slug>/01.webp\", \"alt\": \"caption\" }]).",
   "featured": "takwerx-market",
   "plugins": {
     "takwerx-market":  { "tags": ["tools"], "video": "ygcxS_dXIAU" },
-    "map-depot":       { "tags": ["all"], "video": "LKNuM2yIqu8", "hideShots": true },
+    "map-depot":       { "tags": ["all"], "video": "LKNuM2yIqu8" },
     "feature-layer":   { "tags": ["wildfire", "sar", "all"], "video": "xKn_0C5Q_bg" },
     "atmosphere":      { "tags": ["wildfire", "hazmat", "water"], "video": "MRsD8godnYo" },
     "firecast":        { "tags": ["wildfire"] },
