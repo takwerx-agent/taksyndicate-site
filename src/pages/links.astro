@@ -2,10 +2,8 @@
 import Base from '../layouts/Base.astro';
 // [logo, name, what they do, url]
 const links = [
-  ['/images/img-014.webp', 'The TAK Syndicate', 'Community · Video', 'https://www.youtube.com/@thetaksyndicate6234/'],
   ['/images/links/tak-gov.svg', 'TAK.gov', 'Official · TAK Product Center', 'https://tak.gov'],
   ['/images/links/atak-civ-google-play.svg', 'ATAK-CIV', 'Official · Google Play', 'https://play.google.com/store/apps/details?id=com.atakmap.app.civ'],
-  ['/images/links/atak-map.webp', 'ATAK Map', 'Community · Video', 'https://www.youtube.com/@ATAKMap'],
   ['/images/links/colorado-coe.webp', 'Colorado CoE & CO-TAK', 'Official · Statewide TAK for Colorado', 'https://cofiretech.gov/'],
   ['/images/links/civtak.webp', 'CivTAK', 'Community', 'https://www.civtak.org/'],
   ['/images/links/mytecknet.webp', 'myTeckNet', 'Community · TAK Server guides', 'https://mytecknet.com/tag/tak/'],
@@ -41,6 +39,27 @@ const links = [
   ['/images/links/samsung.svg', 'Samsung', 'Hardware · Public safety devices', 'https://www.samsung.com/us/business/solutions/industries/public-safety/'],
   ['/images/links/juggernaut-case.webp', 'Juggernaut.Case', 'Hardware · Cases & mounts', 'https://juggernautcase.com/'],
 ];
+
+// YouTube channels with real TAK content. [avatar, name, what they cover, url]
+const channels = [
+  ['/images/links/yt/thetaksyndicate.webp', 'The TAK Syndicate', 'Community · TAKwerx & field use', 'https://www.youtube.com/@thetaksyndicate6234'],
+  ['/images/links/yt/cotak.webp', 'COTAK', 'Official · ATAK, iTAK, CloudTAK how-tos', 'https://www.youtube.com/@cotak-gov'],
+  ['/images/links/atak-map.webp', 'ATAK Map', 'Community · Releases & TAK Offsite talks', 'https://www.youtube.com/@ATAKMap'],
+  ['/images/links/yt/takpublicsafety.webp', 'TAK Public Safety', 'Community · Agency talks & interviews', 'https://www.youtube.com/@takpublicsafety'],
+  ['/images/links/yt/atakwizard.webp', 'ATAKwizard', 'Training · Full ATAK-CIV course', 'https://www.youtube.com/@ATAKwizard'],
+  ['/images/links/yt/toughstump.webp', 'Tough Stump', 'Training · Short ATAK tool lessons', 'https://www.youtube.com/@toughstumptechnologies'],
+  ['/images/links/yt/district47.webp', 'District47', 'Training · ATAK, maps, Meshtastic', 'https://www.youtube.com/@Districtfourtyseven'],
+  ['/images/links/yt/tactechlab.webp', 'Tactical Tech Lab', 'Training · ATAK for public safety', 'https://www.youtube.com/@TacTechLab'],
+  ['/images/links/yt/eotak.webp', 'EOTAK', 'Training · TAK basics & UAS Tool', 'https://www.youtube.com/@eotak_official'],
+  ['/images/links/yt/gotak.webp', 'GoTAK', 'Comms · Radios into ATAK', 'https://www.youtube.com/@getgotak'],
+  ['/images/links/yt/conresponse.webp', 'Constellation Response', 'Comms · ATAK over Meshtastic', 'https://www.youtube.com/@ConResponse'],
+  ['/images/links/yt/cloudrf.webp', 'CloudRF', 'Comms · RF planning in ATAK', 'https://www.youtube.com/@cloudrfdotcom'],
+  ['/images/links/yt/mytecknet.webp', 'myTeckNet', 'Development · TAK Server installs', 'https://www.youtube.com/@myTeckNet_Vids'],
+  ['/images/links/yt/riis.webp', 'RIIS', 'Development · Building ATAK plugins', 'https://www.youtube.com/@riisllc'],
+  ['/images/links/yt/sierracodex.webp', 'Sierra Codex', 'Development · TAK Server setup', 'https://www.youtube.com/@SierraCodex'],
+  ['/images/links/yt/rotorlab.webp', 'RotorLab', 'Development · Drones into ATAK', 'https://www.youtube.com/@RotorLabApp'],
+  ['/images/links/yt/valleytactical.webp', 'Valley Tactical Solutions', 'Development · CloudTAK plugins', 'https://www.youtube.com/@ValleyTactical'],
+];
 ---
 <Base title="Links" description="Vendors, agencies, communities and tools across the TAK ecosystem.">
   <main id="main">
@@ -53,6 +72,17 @@ const links = [
         {links.map(([img, name, kind, href]) => (
           <a class="lk-card" href={href} target="_blank" rel="noopener">
             <span class="lk-logo"><img src={img} alt={`${name} logo`} loading="lazy" /></span>
+            <span class="lk-plate"><strong>{name}</strong><small>{kind}</small></span>
+          </a>
+        ))}
+      </div>
+
+      <h2 class="section-title" id="youtube"><b>YT</b> YouTube channels</h2>
+      <p class="section-note">Channels that teach and show TAK: tutorials, server setup, plugins and field use.</p>
+      <div class="lk-grid">
+        {channels.map(([img, name, kind, href]) => (
+          <a class="lk-card lk-yt" href={href} target="_blank" rel="noopener">
+            <span class="lk-logo"><img src={img} alt={`${name} channel`} loading="lazy" /></span>
             <span class="lk-plate"><strong>{name}</strong><small>{kind}</small></span>
           </a>
         ))}
