@@ -17,7 +17,13 @@ const videos = [m.video ?? []].flat().map((v) => (typeof v === 'string' ? { id: 
 // Number the sections that are present, in order.
 let n = 0;
 const num = () => String(++n).padStart(2, '0');
-const reqs = [['Equipment required', s.requires], ['Works with', s.supports], ['Network', s.ports]]
+// The page is for exposure, not engineering: a short intro up front, the README detail folded away.
+const paras = (s.purpose || '').split(/\n\s*\n/);
+let introN = 1;
+if (paras[0].length < 140 && paras[1] && !/:\s*$/.test(paras[1].trim()) && !/^\s*-/.test(paras[1])) introN = 2;
+const intro = paras.slice(0, introN).join('\n\n');
+const rest = paras.slice(introN).join('\n\n').trim();
+const reqs = [['Features in full', rest], ['Equipment required', s.requires], ['Works with', s.supports], ['Network and security', s.ports]]
   .filter(([, t]) => t && !/^none\.?$/i.test(t.trim()));
 ---
 <Base title={`${p.name} — ATAK plugin`} description={p.description}>
@@ -90,17 +96,18 @@ const reqs = [['Equipment required', s.requires], ['Works with', s.supports], ['
           {s.purpose && (
             <section>
               <h2 class="section-title"><b>{num()}</b> What it does</h2>
-              <div class="prose readme" set:html={readmeHtml(s.purpose)} />
+              <div class="prose readme plug-intro" set:html={readmeHtml(intro)} />
             </section>
           )}
 
           {reqs.length > 0 && (
-            <section>
-              <h2 class="section-title"><b>{num()}</b> Requirements</h2>
+            <details class="plug-more">
+              <summary>Technical details <span>features in full, requirements, network</span></summary>
               <div class="prose readme">
                 {reqs.map(([h, t]) => (<><h4>{h}</h4><Fragment set:html={readmeHtml(t)} /></>))}
+                <p><a href={repoUrl}>More on GitHub →</a></p>
               </div>
-            </section>
+            </details>
           )}
 
           {p.manual && (
@@ -119,13 +126,6 @@ const reqs = [['Equipment required', s.requires], ['Works with', s.supports], ['
             </section>
           )}
 
-          {s.status && (
-            <section>
-              <h2 class="section-title"><b>{num()}</b> Status</h2>
-              <div class="prose readme" set:html={readmeHtml(s.status.split(/\n\s*\n/)[0])} />
-              <p class="dl-note"><a href={`${repoUrl}/releases`}>Full release history →</a></p>
-            </section>
-          )}
         </div>
       </div>
     </div>
