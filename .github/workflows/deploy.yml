@@ -41,18 +41,9 @@ jobs:
 
       - run: npm ci
 
-      - name: Check Typst
-        run: command -v typst && typst --version
-
       - name: Build (syncs plugins, then astro build)
         run: npm run build
 
-      - name: Check manuals
-        run: |
-          ls public/manuals | wc -l
-          node -e "const d=require('./src/data/plugins.json'); for (const p of d.plugins) console.log(p.slug, JSON.stringify(p.manual))"
-          grep -c "Read the manual" dist/plugins/atmosphere/index.html || true
-          ls dist/manuals | wc -l
 
       - name: Deploy to Cloudflare
         if: ${{ env.CF_TOKEN != '' }}
