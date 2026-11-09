@@ -14,3 +14,5 @@
 /tools/*                 /takwerx/     301
 /california-tak-resources   /         301
 /california-tak-resources/* /         301
+/plugins/cursorwerx/ /takwerx/#terminal 301
+/plugins/cursorwerx /takwerx/#terminal 301

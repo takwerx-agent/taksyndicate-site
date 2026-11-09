@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { plugins, community, featured } from '../lib/plugins.js';
+import { plugins, community, featured, terminalPlugins } from '../lib/plugins.js';
 
 const GH = 'https://github.com/takwerx';
 
@@ -22,6 +22,7 @@ const issueTargets = [
   ['infra-TAK', 'infra-TAK'],
   ...plugins.map((p) => [`${p.name} (ATAK plugin)`, p.repo.split('/')[1]]),
   ['ATAK Terminal', 'atak-terminal'],
+  ...terminalPlugins.map((p) => [`${p.name} (ATAK Terminal)`, p.repo.split('/')[1]]),
   ['Dispatcher (CloudTAK plugin)', 'cloudtak-dispatcher-plugin'],
   ['TAK Simulator (infra-TAK module)', 'infra-TAK'],
   ...more.map((m) => [m.name, m.repo]),
@@ -35,14 +36,14 @@ const issueTargets = [
         <p>The open-source workshop behind infra-TAK and the TAKwerx ATAK and CloudTAK plugins. Built by a first responder, free for everyone, and all of it on GitHub.</p>
       </div>
 
-      <section class="tw-term">
+      <section class="tw-term" id="terminal">
         <div class="tw-term-text">
           <span class="tw-kicker">New · Beta</span>
           <h2>TAKwerx ATAK Terminal</h2>
           <p class="tw-term-lede">Real ATAK, with its real plugins, in a window on your Mac or Windows PC, running on your graphics chip. Train, build data packages and plan from a desk with a mouse and a big screen.</p>
           <ul class="tw-term-points">
             <li><b>Two steps.</b> Download ATAK-CIV from tak.gov, then paste one line.</li>
-            <li><b>Plugins built in.</b> TAKwerx Market comes installed; add Cursorwerx and the mouse and trackpad just work.</li>
+            <li><b>Plugins built in.</b> TAKwerx Market comes installed, and Cursorwerx makes the mouse and trackpad just work.</li>
             <li><b>Nothing leaves your machine.</b> No account, no telemetry, no paid tier.</li>
           </ul>
           <p class="tw-term-req">Mac: Apple Silicon (M1 or newer), macOS 13+ · Windows 10 (2004+) or 11, 64-bit, a supported graphics chip · 16 GB memory recommended</p>
@@ -57,6 +58,16 @@ const issueTargets = [
           <div class="tw-os">Windows · PowerShell (not as Administrator)</div>
           <pre><code>irm https://raw.githubusercontent.com/takwerx/atak-terminal/main/install.ps1 | iex</code></pre>
           <p class="tw-term-note">First run downloads about 2 GB and takes a few minutes. After that ATAK opens in about half a minute from its own icon.</p>
+          {terminalPlugins.map((t) => (
+            <a class="tw-term-plug" href={`https://github.com/${t.repo}`}>
+              {t.icon && <img src={t.icon} alt="" width="44" height="44" loading="lazy" />}
+              <span>
+                <span class="tw-kicker">Only with ATAK Terminal</span>
+                <strong>{t.name}</strong>
+                <span class="tw-term-plug-d">{t.description}</span>
+              </span>
+            </a>
+          ))}
         </div>
       </section>
 

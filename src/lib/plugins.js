@@ -1,4 +1,5 @@
 import data from '../data/plugins.json';
+import meta from '../data/plugin-meta.json';
 
 export const disciplines = {
   wildfire: { label: 'Wildfire',        c: 'var(--d-fire)' },
@@ -12,7 +13,10 @@ export const disciplines = {
   tools:    { label: 'Utilities',       c: 'var(--d-events)' },
 };
 
-export const plugins = data.plugins;
+// "terminalOnly" plugins ship with the ATAK Terminal, so they live on /takwerx/, not in the catalog.
+const terminalOnly = (p) => meta.plugins[p.slug]?.terminalOnly;
+export const plugins = data.plugins.filter((p) => !terminalOnly(p));
+export const terminalPlugins = data.plugins.filter(terminalOnly);
 export const community = data.community;
 export const featured = data.plugins.find((p) => p.slug === data.featured);
 export const synced = data.synced;

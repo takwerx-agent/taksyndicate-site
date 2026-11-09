@@ -652,3 +652,11 @@ main.map-page { padding: 0; }
 .plug-more[open] > summary::before { content: "−"; }
 .plug-more > summary span { color: var(--muted); text-transform: none; letter-spacing: 0; font-family: var(--font); font-size: .85rem; }
 .plug-more > .prose { padding: 0 20px 20px; border-top: 1px solid var(--border); }
+
+/* ATAK Terminal: plugins that ship only with it */
+.tw-term-plug { display: flex; gap: 14px; align-items: center; margin-top: 18px; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg); color: var(--text); text-decoration: none; }
+.tw-term-plug:hover { border-color: var(--accent); }
+.tw-term-plug img { width: 44px; height: 44px; border-radius: 8px; flex: none; }
+.tw-term-plug > span { display: flex; flex-direction: column; gap: 2px; }
+.tw-term-plug strong { font-size: 1rem; }
+.tw-term-plug-d { color: var(--muted); font-size: .86rem; }
