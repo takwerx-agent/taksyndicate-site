@@ -35,9 +35,17 @@ jobs:
       # Same Typst the plugin builds use to put the manual inside the APK.
       - name: Install Typst
         run: |
-          curl -fsSL --retry 5 https://github.com/typst/typst/releases/download/v0.13.1/typst-x86_64-unknown-linux-musl.tar.xz \
-            | tar -xJ -C "$RUNNER_TEMP"
-          echo "$RUNNER_TEMP/typst-x86_64-unknown-linux-musl" >> "$GITHUB_PATH"
+          D="$RUNNER_TEMP/typst-x86_64-unknown-linux-musl"
+          mkdir -p "$D"
+          # GitHub release first; if github.com downloads are down, take the same binary from Typst's official image.
+          if ! curl -fsSL --retry 3 https://github.com/typst/typst/releases/download/v0.13.1/typst-x86_64-unknown-linux-musl.tar.xz | tar -xJ -C "$RUNNER_TEMP"; then
+            echo "Release download failed; using ghcr.io/typst/typst:v0.13.1"
+            cid=$(docker create ghcr.io/typst/typst:v0.13.1)
+            docker cp "$cid:/bin/typst" "$D/typst"
+            docker rm "$cid"
+          fi
+          echo "$D" >> "$GITHUB_PATH"
+          "$D/typst" --version
 
       - run: npm ci
 
