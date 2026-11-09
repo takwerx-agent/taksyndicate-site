@@ -11,6 +11,9 @@ const repoUrl = `https://github.com/${p.repo}`;
 const s = p.sections;
 const m = meta.plugins[p.slug] ?? {};
 const shots = m.hideShots ? [] : p.shots;
+// Number the sections that are present, in order.
+let n = 0;
+const num = () => String(++n).padStart(2, '0');
 const reqs = [['Equipment required', s.requires], ['Works with', s.supports], ['Network', s.ports]]
   .filter(([, t]) => t && !/^none\.?$/i.test(t.trim()));
 ---
@@ -51,7 +54,7 @@ const reqs = [['Equipment required', s.requires], ['Works with', s.supports], ['
         <div class="plug-main">
           {m.video && (
             <section>
-              <h2 class="section-title" style="margin-top:0"><b>01</b> Watch</h2>
+              <h2 class="section-title" style="margin-top:0"><b>{num()}</b> Watch</h2>
               <div class="embed" style="margin-top:0">
                 <iframe src={`https://www.youtube-nocookie.com/embed/${m.video}`} loading="lazy"
                   title={`${p.name} video`} allowfullscreen
@@ -62,7 +65,7 @@ const reqs = [['Equipment required', s.requires], ['Works with', s.supports], ['
 
           {shots.length > 0 && (
             <section>
-              <h2 class="section-title" style={m.video ? undefined : "margin-top:0"}><b>01</b> Screenshots</h2>
+              <h2 class="section-title" style={m.video ? undefined : "margin-top:0"}><b>{num()}</b> Screenshots</h2>
               <div class="shots">
                 {shots.map((sh, i) => (
                   <a class="shot" href={sh.src} target="_blank" rel="noopener">
@@ -76,14 +79,14 @@ const reqs = [['Equipment required', s.requires], ['Works with', s.supports], ['
 
           {s.purpose && (
             <section>
-              <h2 class="section-title"><b>02</b> What it does</h2>
+              <h2 class="section-title"><b>{num()}</b> What it does</h2>
               <div class="prose readme" set:html={readmeHtml(s.purpose)} />
             </section>
           )}
 
           {reqs.length > 0 && (
             <section>
-              <h2 class="section-title"><b>03</b> Requirements</h2>
+              <h2 class="section-title"><b>{num()}</b> Requirements</h2>
               <div class="prose readme">
                 {reqs.map(([h, t]) => (<><h4>{h}</h4><Fragment set:html={readmeHtml(t)} /></>))}
               </div>
@@ -92,7 +95,7 @@ const reqs = [['Equipment required', s.requires], ['Works with', s.supports], ['
 
           {p.manual && (
             <section>
-              <h2 class="section-title" id="manual"><b>04</b> User manual</h2>
+              <h2 class="section-title" id="manual"><b>{num()}</b> User manual</h2>
               <div class="manual">
                 <a class="manual-cover" href={p.manual.href} target="_blank" rel="noopener" data-pdf={p.manual.href}>
                   {p.manual.cover && <img src={p.manual.cover} alt={`${p.name} user manual title page`} loading="lazy" />}
@@ -108,7 +111,7 @@ const reqs = [['Equipment required', s.requires], ['Works with', s.supports], ['
 
           {s.status && (
             <section>
-              <h2 class="section-title"><b>05</b> Status</h2>
+              <h2 class="section-title"><b>{num()}</b> Status</h2>
               <div class="prose readme" set:html={readmeHtml(s.status.split(/\n\s*\n/)[0])} />
               <p class="dl-note"><a href={`${repoUrl}/releases`}>Full release history →</a></p>
             </section>
