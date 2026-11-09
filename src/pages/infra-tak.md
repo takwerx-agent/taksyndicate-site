@@ -5,7 +5,7 @@ description: "Deploy and manage the whole TAK stack from a browser. No more SSH.
 ---
 
 infra-TAK is a single web console that deploys and manages TAK infrastructure on one
-server. Upload your TAK Server `.deb`, set a password, and drive the rest from the
+server. Upload your TAK Server installer package, set a password, and drive the rest from the
 browser — identity, certificates, SSL, video, automation and health monitoring included.
 
 **No more SSH. No more editing XML by hand. No more running scripts and hoping.**
@@ -21,7 +21,7 @@ browser — identity, certificates, SSL, video, automation and health monitoring
 
 ## What it deploys
 
-- **TAK Server** — upload your `.deb`, configure, deploy, manage CoreConfig from the browser
+- **TAK Server** — upload your installer package, configure, deploy, manage CoreConfig from the browser
 - **Federation Hub** — on this machine or a remote VPS, with SSO, certificates and monitoring
 - **Authentik** — identity provider with automated LDAP configuration for TAK Server auth
 - **TAK Portal** — user and certificate management, auto-wired to Authentik and TAK Server
@@ -77,7 +77,7 @@ leave them alone.
 | **Disk** | 50 GB+ recommended (a full deployment sits around 26 GB before data) |
 | **Storage** | SSD-backed — slow disk I/O causes build timeouts and unreliable boots |
 | **CPU** | 4 cores minimum for TAK Server; more for the full stack |
-| **TAK Server** | Your own `.deb` package from [tak.gov](https://tak.gov) |
+| **TAK Server** | Your own installer package from [tak.gov](https://tak.gov) |
 
 A fresh install is strongly recommended. Test your VPS disk speed before deploying —
 the repo README has the exact commands.
