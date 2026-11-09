@@ -636,3 +636,10 @@ main.map-page { padding: 0; }
 .docs .prose h3 { padding-left: 14px; position: relative; }
 .docs .prose h3::before { content: ""; position: absolute; left: 0; top: .2em; bottom: .2em; width: 3px; background: var(--gold); border-radius: 1px; }
 .toc a.lvl-3.active, .toc a.active { color: var(--gold); border-left-color: var(--gold); }
+
+/* plugin page videos: one full width, two side by side */
+.plug-videos figure { margin: 0; }
+.plug-videos .embed { margin: 0; }
+.plug-videos.two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.plug-videos figcaption { margin-top: 8px; font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+@media (max-width: 760px) { .plug-videos.two { grid-template-columns: 1fr; } }

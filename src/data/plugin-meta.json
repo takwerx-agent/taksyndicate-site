@@ -4,7 +4,7 @@
   "plugins": {
     "takwerx-market":  { "tags": ["tools"], "video": "ygcxS_dXIAU" },
     "map-depot":       { "tags": ["all"], "video": "LKNuM2yIqu8" },
-    "feature-layer":   { "tags": ["wildfire", "sar", "all"], "video": "xKn_0C5Q_bg" },
+    "feature-layer":   { "tags": ["wildfire", "sar", "all"], "video": [{ "id": "xKn_0C5Q_bg", "title": "Feature Layer" }, { "id": "sk0TUeV8kOI", "title": "Add-on: DART Fireguard enhancements" }] },
     "atmosphere":      { "tags": ["wildfire", "hazmat", "water"], "video": "MRsD8godnYo" },
     "firecast":        { "tags": ["wildfire"] },
     "lces":            { "tags": ["wildfire"] },
