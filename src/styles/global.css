@@ -660,3 +660,15 @@ main.map-page { padding: 0; }
 .tw-term-plug > span { display: flex; flex-direction: column; gap: 2px; }
 .tw-term-plug strong { font-size: 1rem; }
 .tw-term-plug-d { color: var(--muted); font-size: .86rem; }
+
+/* ---------- links: logo cards with a name plate ---------- */
+.lk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 16px; margin: 8px 0 40px; }
+.lk-card { display: flex; flex-direction: column; border-radius: 8px; overflow: hidden; text-decoration: none; border: 1px solid var(--border); background: #f4f6f8; transition: transform .15s, box-shadow .15s, border-color .15s; }
+.lk-card:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 12px 26px -12px rgba(0,0,0,.7); }
+.lk-logo { display: grid; place-items: center; height: 116px; padding: 16px 18px; }
+.lk-logo img { max-width: 100%; max-height: 76px; width: auto; height: auto; object-fit: contain; }
+.lk-plate { display: block; position: relative; padding: 9px 12px 8px; background: #0d1722; color: #fff; }
+.lk-plate::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: linear-gradient(90deg, var(--d-fire), var(--d-hazmat), var(--d-sar), var(--d-water), var(--d-le)); }
+.lk-plate strong { display: block; font-family: var(--display); text-transform: uppercase; font-size: 1.05rem; line-height: 1.1; letter-spacing: .02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lk-plate small { display: block; font: .62rem/1.5 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: #9fb0c2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 480px) { .lk-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } .lk-logo { height: 92px; padding: 12px; } }

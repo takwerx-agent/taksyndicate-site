@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+// [logo, name, what it is, url]
+const links = [
+  ['/images/img-014.webp',       'The TAK Syndicate',   'YouTube channel',            'https://www.youtube.com/@thetaksyndicate6234/'],
+  ['/images/img-015.webp',       'TAK.gov',             'TAK Product Center',         'https://tak.gov'],
+  ['/images/img-035.webp',       'ATAK-CIV',            'Google Play',                'https://play.google.com/store/apps/details?id=com.atakmap.app.civ'],
+  ['/images/img-011.webp',       'MyTeckNet',           'TAK guides',                 'https://mytecknet.com/tag/tak/'],
+  ['/images/img-021.webp',       'CRG',                 'Grid reference graphics',    'https://www.crgplans.com/'],
+  ['/images/img-038.webp',       'Tough Stump',         'Training & development',     'https://toughstump.com/'],
+  ['/images/img-042.webp',       'CivTAK',              'Community',                  'https://www.civtak.org/'],
+  ['/images/img-043.webp',       'Colorado CoE',        'YouTube channel',            'https://www.youtube.com/@coloradocenterofexcellence3102'],
+  ['/images/links/booz-allen.svg', 'Booz Allen',        'Sit(x) · formerly PAR',      'https://www.boozallen.com/expertise/products/sitx-situational-awareness-in-real-time.html'],
+  ['/images/links/parsons.svg',  'Parsons',             'TAK-as-a-Service',           'https://www.parsons.com/products/takaas/'],
+  ['/images/links/flight-tactics.svg', 'Flight Tactics', 'TAK Aware for iOS',         'https://www.flighttactics.com/'],
+  ['/images/img-022.webp',       'Realm Alliance',      'TAK services',               'https://www.realmalliance.com/'],
+  ['/images/img-030.webp',       'Beartooth',           'Off-grid comms',             'https://beartooth.com/'],
+  ['/images/img-023.webp',       'Sensors & Signals',   'TAK integrations',           'https://snstac.com/'],
+  ['/images/img-041.webp',       'FreeTAKTeam',         'YouTube channel',            'https://www.youtube.com/@freetakteam'],
+  ['/images/img-020.webp',       'Mapping Support',     'Map data for TAK',           'https://mappingsupport.com/'],
+  ['/images/img-012.webp',       'ATAK Map',            'YouTube channel',            'https://www.youtube.com/c/atakmap'],
+  ['/images/img-032.webp',       'Somewear Labs',       'Satellite comms',            'https://somewearlabs.com/'],
+  ['/images/img-040.webp',       'Fenix Group',         'TAK solutions',              'https://www.fenixgroupinc.com/'],
+  ['/images/img-025.webp',       'Overwatch Aero',      'Aerial intelligence',        'https://overwatchaero.com/'],
+  ['/images/img-039.webp',       'Samsung',             'Public safety devices',      'https://www.samsung.com/us/business/solutions/industries/public-safety/'],
+  ['/images/img-013.webp',       'Aries Defense',       'Mesh networking',            'https://ariesdefense.com/'],
+  ['/images/img-026.webp',       'Syzygy Integration',  'TAK servers & plugins',      'https://syzygyintegration.com/'],
+  ['/images/img-027.webp',       'goTenna',             'Mesh networking',            'https://gotenna.com/'],
+  ['/images/img-024.webp',       'RaytheonBBN',         'TAK store',                  'https://bbn-tak.myshopify.com/'],
+  ['/images/img-019.webp',       'Doodle Labs',         'Mesh radios',                'https://doodlelabs.com/'],
+  ['/images/img-037.webp',       'Juggernaut.Case',     'Device mounts',              'https://juggernautcase.com/'],
+  ['/images/img-036.webp',       'Squishy Robotics',    'Hazmat robotics',            'https://squishy-robotics.com/'],
+  ['/images/img-016.webp',       'Darkhive',            'Autonomous drones',          'https://www.darkhive.ai/'],
+  ['/images/img-017.webp',       '4K Solutions',        'TAK solutions',              'https://4ksolutions.com/'],
+  ['/images/img-031.webp',       'ForeTAK',             'TAK in Australia',           'https://foretak.au/'],
+  ['/images/img-018.webp',       'Eolian',              'VR-TAK',                     'https://www.eolianvr.com/'],
+  ['/images/links/eotak.webp',   'EOTAK',               'Managed TAK servers',        'https://eotak.com/'],
+  ['/images/img-029.webp',       'KWESST',              'Tactical systems',           'https://www.kwesst.com/'],
+  ['/images/img-033.webp',       'GoTAK',               'TAK Server hosting',         'https://www.getgotak.com'],
+];
+---
+<Base title="Links" description="Vendors, agencies, communities and tools across the TAK ecosystem.">
+  <main id="main">
+    <div class="wrap">
+      <div class="page-head">
+        <h1>Links</h1>
+        <p>Vendors, agencies, communities and tools across the TAK ecosystem. Listed to help you find your way, not as endorsements.</p>
+      </div>
+      <div class="lk-grid">
+        {links.map(([img, name, kind, href]) => (
+          <a class="lk-card" href={href} target="_blank" rel="noopener">
+            <span class="lk-logo"><img src={img} alt={`${name} logo`} loading="lazy" /></span>
+            <span class="lk-plate"><strong>{name}</strong><small>{kind}</small></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </main>
+</Base>
