@@ -75,7 +75,7 @@ function sparseClone(repo) {
 
 async function buildManual(dir, repo) {
   const src = path.join(dir, 'docs/user_manual');
-  if (!fs.existsSync(path.join(src, 'usermanual.typ'))) return null;
+  if (!fs.existsSync(path.join(src, 'usermanual.typ'))) { console.warn(`  ! no docs/user_manual/usermanual.typ for ${repo}`); return null; }
   const outDir = path.join(ROOT, 'public/manuals');
   fs.mkdirSync(outDir, { recursive: true });
   const out = path.join(outDir, `${repo}.pdf`);

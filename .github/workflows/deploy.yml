@@ -41,8 +41,14 @@ jobs:
 
       - run: npm ci
 
+      - name: Check Typst
+        run: command -v typst && typst --version
+
       - name: Build (syncs plugins, then astro build)
         run: npm run build
+
+      - name: Check manuals
+        run: ls -la public/manuals | head -30
 
       - name: Deploy to Cloudflare
         if: ${{ env.CF_TOKEN != '' }}
