@@ -101,6 +101,16 @@ ATAK and TAK Aware have also been tested over T-Mobile's satellite service (T-Sa
 
 Many commercially available drones/UAS platforms can be used inside the TAK ecosystem via the ATAK UAS-Tool Plugin available on the Google Playstore. See the TAK Syndicate youtube channel for a brief introduction to the benefits of using a drone/UAS in ATAK.
 
+### How does TAK help with airspace awareness?
+
+TAK is one of the best places to bring the airspace together, because everything arrives as a point on the same shared map.
+
+- **Crewed aircraft (ADS-B).** Most aircraft broadcast their position, altitude and callsign over ADS-B. ATAK can show them from a networked feed, pushed out through a TAK Server so the whole team sees the same traffic, or directly from a small ADS-B receiver at the incident when there is no network.
+- **Drones (Remote ID).** Most drones in the U.S. now broadcast Remote ID: the drone's position and altitude, its serial number, and where the pilot is standing. A Remote ID receiver turns that into TAK markers, so a crew can see every drone flying near the incident, not only their own.
+- **Restrictions.** The free TAKwerx [Air Aware](/plugins/air-aware/) plugin draws TFRs, NOTAMs, airspace classes, drone ceilings and no-fly areas in ATAK, so a crew knows what it may do where it is standing.
+
+The same approach works for every other sensor. RF detectors, acoustic sensors, radar, and EO/IR cameras can all send their detections into TAK as Cursor on Target. Instead of a separate screen for each system, everyone on the TAK Server shares one picture of what is in the air and on the ground. Companies that build these integrations, such as UAS Strategic, Nine Hill Technologies, Echodyne and Sensors & Signals, are on the [Links page](/links/).
+
 ### How much does TAK cost?
 
 While the TAK applications are free from the federal government the costs associated with running a TAK program stem from deploying a server, the cost of end eser devices (phones, tablets etc), additional communication devices such as mesh radios, video and UAS Integrations, etc. The benefit of TAK is you can start out small and scale to what fits your needs and budget.
