@@ -5,6 +5,9 @@ import '../styles/global.css';
 // Until it is set, Univia Pro shows only on machines that have it installed; others get Public Sans.
 const ADOBE_FONTS_KIT = '';
 const { title, description = 'The TAK Syndicate — an ad-hoc group of focused professionals promoting the Team Awareness Kit for emergency response.' } = Astro.props;
+// Site-wide notice. It disappears on its own after `until` (the site rebuilds every 6 hours).
+const notice = { id: 'civtak26', until: '2026-11-21', text: 'CIVTAK26 · Nov 18–20, 2026 · Arlington, VA', cta: 'Registration open', href: 'https://civtakconf.com/' };
+const showNotice = new Date() < new Date(notice.until + 'T12:00:00Z');
 const full = title ? `${title} — The TAK Syndicate` : 'The TAK Syndicate';
 ---
 <!doctype html>
@@ -37,6 +40,12 @@ const full = title ? `${title} — The TAK Syndicate` : 'The TAK Syndicate';
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
+  {showNotice && (
+    <div class="site-notice" data-notice={notice.id}>
+      <a href={notice.href} target="_blank" rel="noopener"><b>{notice.text}</b><span>{notice.cta} →</span></a>
+      <button type="button" aria-label="Hide this notice">×</button>
+    </div>
+  )}
   <Nav />
   <slot />
   <footer class="site-footer">
@@ -47,6 +56,13 @@ const full = title ? `${title} — The TAK Syndicate` : 'The TAK Syndicate';
   </footer>
 
   <script is:inline>
+    // site notice: hide for this visitor once closed
+    (function () {
+      var n = document.querySelector('.site-notice'); if (!n) return;
+      var key = 'notice-' + n.dataset.notice;
+      try { if (localStorage.getItem(key)) n.remove(); } catch (e) {}
+      n.querySelector('button').addEventListener('click', function () { n.remove(); try { localStorage.setItem(key, '1'); } catch (e) {} });
+    })();
     // theme toggle
     document.querySelector('.theme-toggle')?.addEventListener('click', function () {
       var root = document.documentElement;
