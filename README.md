@@ -15,7 +15,7 @@ Every page is one Markdown file in `src/pages/`:
 | `infra-tak.md` | infra-TAK — install guide, requirements, video |
 | `plugins.astro` | ATAK plugins (PLSS Grid downloads + guide) |
 | `takwerx.astro` | TAKwerx hub: infra-TAK, plugins, CloudTAK plugins, issue picker |
-| `links.md` | Link/logo grid |
+| `links.astro` | Logo cards with name plates (edit the `links` array) |
 | `shields.md` | Shields |
 
 `plugins.astro` and `tools.astro` hold their data in an array at the top of the file —
