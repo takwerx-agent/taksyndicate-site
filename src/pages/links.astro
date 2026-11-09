@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-// [logo, name, what they do, url]
+// [logo, name, what they do, url, 'cover' to let a photo-style logo fill the tile]
 const links = [
   ['/images/links/tak-gov.svg', 'TAK.gov', 'Official · TAK Product Center', 'https://tak.gov'],
   ['/images/links/parsons.svg', 'Parsons', 'TAK as a service · Development', 'https://www.parsons.com/products/takaas/'],
@@ -18,6 +18,8 @@ const links = [
   ['/images/links/booz-allen.svg', 'Booz Allen', 'Sit(x) · TAK as a service', 'https://www.boozallen.com/expertise/products/sitx-situational-awareness-in-real-time.html'],
   ['/images/links/eotak.webp', 'EOTAK', 'TAK as a service', 'https://eotak.com/'],
   ['/images/links/takgrid.svg', 'TAKGRID', 'TAK as a service', 'https://takgrid.com/'],
+  ['/images/links/247-group.webp', '247 Group', 'TAK as a service · Training · Integration', 'https://www.247grp.net/', 'cover'],
+  ['/images/links/bryodyn.webp', 'Bryodyn Technologies', 'TAK as a service · Training · Development · Hardware', 'https://www.bryodyn.com/'],
   ['/images/links/takhub.webp', 'TAK Hub', 'TAK as a service · Training · Germany', 'https://takhub.de/'],
   ['/images/links/thinkon.webp', 'ThinkOn', 'TAK as a service · Canada', 'https://thinkon.com/news/thinkon-and-avss-give-canadian-public-safety-and-defence-a-sovereign-alternative/'],
   ['/images/links/sensors-and-signals.webp', 'Sensors & Signals', 'Integration · TAK as a service · Development · Training', 'https://www.snstac.com/'],
@@ -28,11 +30,15 @@ const links = [
   ['/images/links/district47.svg', 'District 47', 'Map data · Training · Hardware', 'https://district47.us/'],
   ['/images/links/4k-solutions.svg', '4K Solutions', 'Comms · Hardware · Training', 'https://4ksolutions.com/solutions/android-tactical-assault-kit/'],
   ['/images/links/ds2.webp', 'DS2', 'Development · ATAK & TAK Server plugins', 'https://www.ds2.com/atak/'],
+  ['/images/links/skytl.webp', 'SkyTL', 'Map data · Weather, fire & flood threats', 'https://www.skytl.com/'],
   ['/images/links/fireview.svg', 'FireView', 'Wildfire · Live aircraft video & IR', 'https://fireview.aero/'],
   ['/images/links/esri.svg', 'Esri', 'Map data · Integration · ArcGIS and TAK', 'https://doc.arcgis.com/en/velocity/ingest/tak-client.htm'],
   ['/images/links/skyfi.svg', 'SkyFi', 'Map data · Satellite imagery in ATAK', 'https://skyfi.com/en/products/atak'],
   ['/images/links/eli-technology.webp', 'ELi Technology', 'Integration · Indoor location for schools', 'https://www.eli-technology.com/products-services/atls-tak-plugin'],
   ['/images/links/echodyne.webp', 'Echodyne', 'Integration · Radar in ATAK', 'https://www.echodyne.com/newsroom/echodyne-announces-atak-integration-for-mesa-r-radar-platform'],
+  ['/images/links/weartak.webp', 'Ascent Integrated Tech', 'Hardware · WearTAK: TAK on a smartwatch', 'https://ascentitech.com/'],
+  ['/images/links/certus-innovations.webp', 'Certus Innovations', 'Development · Hardware · Samsung reseller', 'https://www.certusinnovations.com/'],
+  ['/images/links/bridge4ps.webp', 'Bridge4PS', 'Integration · Messaging that reaches TAK', 'https://bridge4ps.com/'],
   ['/images/links/flight-tactics.svg', 'Flight Tactics', 'Development · TAK Aware for iOS', 'https://www.flighttactics.com/'],
   ['/images/links/eolianvr.webp', 'EolianVR', 'Development · ARTAK (AR/VR TAK)', 'https://www.eolianvr.com/artak'],
   ['/images/links/sigma-defense.svg', 'Sigma Defense', 'Development · Integration · now owns Aries Defense', 'https://sigmadefense.com/'],
@@ -41,6 +47,7 @@ const links = [
   ['/images/links/red-cat.webp', 'Red Cat', 'Drones · ATAK UAS Tool', 'https://redcataerial.com/solutions/command-and-control/'],
   ['/images/links/skydio.svg', 'Skydio', 'Drones · Integration', 'https://www.skydio.com/blog/skydio-x10d-integrates-with-atak-for-tactical-isr'],
   ['/images/links/darkhive.svg', 'Darkhive', 'Integration · Drones', 'https://www.darkhive.com/solutions'],
+  ['/images/links/safe-environment.webp', 'Safe Environment Engineering', 'Integration · CBRN sensors in TAK (EPATAK)', 'https://www.safeenv.com/'],
   ['/images/img-036.webp', 'Squishy Robotics', 'Integration · Hazmat robots', 'https://squishy-robotics.com/third-party-integrations/'],
   ['/images/links/overwatch-aero.webp', 'Overwatch Aero', 'Aerial ISR', 'https://overwatchaero.com/'],
   ['/images/links/crg.svg', 'Critical Response Group', 'Map data · Response graphics', 'https://www.crgplans.com/'],
@@ -49,6 +56,7 @@ const links = [
   ['/images/links/cloudrf.webp', 'CloudRF', 'Comms · RF planning in ATAK', 'https://cloudrf.com/atak-plugin/'],
   ['/images/links/liveu.svg', 'LiveU', 'Comms · Bonded live video into TAK', 'https://www.liveu.tv/solutions/public-sector'],
   ['/images/links/teradek.svg', 'Teradek', 'Comms · Hardware · Drone & camera video into TAK', 'https://teradek.com/pages/public-safety'],
+  ['/images/links/locateone.webp', 'BK Technologies LocateONE', 'Comms · Radio user locations in ATAK', 'https://bkone.com/locateone/'],
   ['/images/links/meshtastic.svg', 'Meshtastic', 'Comms · LoRa mesh with an ATAK plugin', 'https://meshtastic.org/docs/software/integrations/integrations-atak-plugin/'],
   ['/images/links/persistent-systems.svg', 'Persistent Systems', 'Comms · Hardware · MPU5 runs ATAK', 'https://persistentsystems.com/mpu5/'],
   ['/images/links/silvus.svg', 'Silvus Technologies', 'Comms · Mesh radios with an ATAK plugin', 'https://silvustechnologies.com/products/streamscape/'],
@@ -97,8 +105,8 @@ const channels = [
         <a href="#youtube">YouTube channels <span>{channels.length}</span></a>
       </nav>
       <div class="lk-grid" id="orgs">
-        {links.map(([img, name, kind, href]) => (
-          <a class="lk-card" href={href} target="_blank" rel="noopener">
+        {links.map(([img, name, kind, href, look]) => (
+          <a class:list={['lk-card', look === 'cover' && 'lk-cover']} href={href} target="_blank" rel="noopener">
             <span class="lk-logo"><img src={img} alt={`${name} logo`} loading="lazy" /></span>
             <span class="lk-plate"><strong>{name}</strong><small>{kind}</small></span>
           </a>

@@ -33,6 +33,7 @@ TAK makes its biggest impact with dismounted resource tracking and collaboration
 | Windows | WinTAK |
 | Windows & Linux | TAKX |
 | Browser | WebTAK, [CloudTAK](https://github.com/dfpc-coe/CloudTAK) |
+| Smartwatch | [WearTAK](#can-i-run-tak-on-a-watch) |
 | Virtual Reality | VR-TAK |
 
 ### Where do I get ATAK/WinTAK and associated Plugins?
@@ -57,6 +58,14 @@ TAK Aware, an iOS TAK client from Flight Tactics, is also on the [Apple App Stor
 
 
 iOS TAK clients don't have a plugin architecture, so they are limited to the capabilities built into the core application.
+
+### Can I run TAK on a watch?
+
+Yes. [WearTAK](https://ascentitech.com/) from Ascent Integrated Tech puts TAK on a Samsung Galaxy smartwatch. The watch is a TAK device of its own: it sends and receives Cursor on Target directly, so it works with your existing TAK Server and needs no plugin and no server changes.
+
+WearTAK shows your team on the map at a glance on your wrist. It can also watch the wearer's vital signs (heart rate, skin temperature, blood oxygen, exertion, cold stress and signs of major trauma) and send an automatic alert to command when something is wrong. Data is tied to the callsign, such as a riding position on an engine, not to a named person, and each wearer can turn the health monitoring off on the watch.
+
+It was built with the Air Force TAK Center of Excellence, is fielded across the Department of Defense, and is being piloted by fire departments. Ascent says WearTAK is free for public safety. Get it from the "Get WearTAK" page on [ascentitech.com](https://ascentitech.com/).
 
 ### What is a Plugin?
 
