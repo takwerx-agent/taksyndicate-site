@@ -1,37 +1,33 @@
 # The TAK Syndicate — website
 
-Static site built with [Astro](https://astro.build). Content is plain Markdown; hosting is
-Cloudflare Pages. No server, no database, no CMS.
+Source for [www.thetaksyndicate.org](https://www.thetaksyndicate.org), an advocacy site for the
+Team Awareness Kit. Static site built with [Astro](https://astro.build), hosted as a Cloudflare
+Worker (static assets). No server, no database, no CMS.
 
-## Edit content
+Working with Claude Code? See [CLAUDE.md](CLAUDE.md) for the site rules and conventions.
 
-Every page is one Markdown file in `src/pages/`:
+## Pages
 
 | File | Page |
 |---|---|
-| `index.astro` | Home (hero + cards + videos) |
-| `who-is-using-tak.astro` | Organizations deploying TAK (map embed) |
-| `faq.md` | FAQ (auto-generates its sidebar from `###` headings) |
-| `infra-tak.md` | infra-TAK — install guide, requirements, video |
-| `plugins.astro` | ATAK plugins (PLSS Grid downloads + guide) |
-| `takwerx.astro` | TAKwerx hub: infra-TAK, plugins, CloudTAK plugins, issue picker |
-| `links.astro` | Logo cards with name plates (edit the `links` array) |
-| `shields.md` | Shields |
+| `src/pages/index.astro` | Home (hero, cards, videos) |
+| `src/pages/faq.md` | FAQ |
+| `src/pages/who-is-using-tak.astro` | Organizations using TAK (map embed) |
+| `src/pages/takwerx.astro` | TAKwerx hub: infra-TAK, plugins, CloudTAK plugins, issue picker |
+| `src/pages/infra-tak.md` | infra-TAK install guide, requirements, video |
+| `src/pages/plugins/index.astro` | ATAK plugin catalog |
+| `src/pages/plugins/[slug].astro` | One page per plugin (README, manual PDF, APK links) |
+| `src/pages/links.astro` | Links: logo cards (`links` array) and YouTube channels (`channels` array) |
+| `src/pages/shields.astro` | Shields |
+| `src/pages/atak-terminal.astro` | ATAK Terminal (linked from Home and TAKwerx, not in the top menu) |
 
-`plugins.astro` and `tools.astro` hold their data in an array at the top of the file —
-add a plugin or repo by adding one entry, no HTML needed.
+The top menu is the `links` array in `src/components/Nav.astro`. The site notice bar (for
+events) is in `src/layouts/Base.astro`.
 
-`public/_redirects` keeps the old Google Sites URLs alive: `/tak-server` and
-`/mediamtx-video-server` now 301 to the new pages.
+### Add a page
 
-Edit the Markdown, commit, push — the site rebuilds and deploys itself.
-
-### Useful bits
-
-- A fenced code block automatically gets a **Copy** button.
-- On a `Docs.astro` page, every `##`/`###` heading automatically appears in the sidebar.
-- To add a page: drop a new `.md` in `src/pages/` with the frontmatter below, then add it to
-  the `links` array in `src/components/Nav.astro`.
+Add a `.md` file in `src/pages/` with this frontmatter, then add it to the menu in
+`src/components/Nav.astro`:
 
 ```
 ---
@@ -41,25 +37,50 @@ description: "One line for search engines."
 ---
 ```
 
-Use `layout: ../layouts/Docs.astro` instead for a long page that should get a sidebar.
+Use `layout: ../layouts/Docs.astro` for a long page. Docs pages get a sidebar made from their
+`##` and `###` headings. A fenced code block on any page gets a **Copy** button.
+
+The menu collapses to a hamburger at 900px wide. The full header needs about 870px, so measure
+again if you add a menu item.
+
+## Plugin catalog
+
+`/plugins/` is generated. `scripts/sync-plugins.mjs` reads the live TAKwerx Market catalog
+(mapdepot.takwerx.org), sparse-clones each takwerx plugin repo into `.cache/plugins/`, and
+writes `src/data/plugins.json`. It also compiles each plugin's Typst user manual to
+`public/manuals/<repo>.pdf`, so it needs [`typst`](https://github.com/typst/typst) installed.
+Extra per-plugin fields go in `src/data/plugin-meta.json`.
+
+```bash
+npm run sync:plugins          # all plugins
+node scripts/sync-plugins.mjs lces   # one plugin, by repo name
+```
 
 ## Local development
 
 ```bash
 npm install
 npm run dev      # http://localhost:4321
-npm run build    # output in dist/
+npm run build    # syncs plugins, then builds to dist/
+npx astro build  # builds without the plugin sync (use if the sync fails locally)
 ```
 
-## Deploy (Cloudflare Pages)
+## Deploy
 
-Connect the repo once, then it deploys on every push to `main`.
+Every push to `main` deploys to the live site. `.github/workflows/deploy.yml` also runs every
+6 hours to pick up plugin catalog changes.
 
-- Framework preset: **Astro**
-- Build command: `npm run build`
-- Output directory: `dist`
+- The workflow installs `typst`, runs `npm ci` and `npm run build`, then runs
+  `wrangler deploy`.
+- `wrangler.jsonc` serves `dist/` as static assets on the Worker `taksyndicate-site`, with the
+  custom domains `www.thetaksyndicate.org` and `thetaksyndicate.org`.
+- Repo secrets: `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
+- DNS is on Cloudflare. The domain registrar is GoDaddy.
+
+`public/_redirects` keeps the old Google Sites URLs working (for example `/tak-server` goes to
+`/infra-tak/`, `/tools` goes to `/takwerx/`). `public/_headers` sets response headers.
 
 ## Images
 
-Source images are optimized WebP in `public/images/`. To add one, drop it in that folder and
-reference it as `![alt text](/images/name.webp)`.
+Images are in `public/images/` (WebP where possible); Links-page logos are in
+`public/images/links/`. Reference an image as `![alt text](/images/name.webp)` in Markdown.
