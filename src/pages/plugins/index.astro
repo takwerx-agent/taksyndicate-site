@@ -52,7 +52,6 @@ const rest = plugins.filter((p) => p !== featured);
             </span>
             <span class="plug-meta">
               {p.manual && <span>PDF manual</span>}
-              {p.shots.length > 0 && <span>{p.shots.length} screenshots</span>}
               <span>ATAK {p.builds.map((b) => b.atak).reverse().join(' · ')}</span>
             </span>
           </a>
