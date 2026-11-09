@@ -673,3 +673,7 @@ main.map-page { padding: 0; }
 .lk-plate small { display: block; font: .62rem/1.5 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: #9fb0c2; }
 .lk-plate { flex: 1; }
 @media (max-width: 480px) { .lk-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } .lk-logo { height: 92px; padding: 12px; } }
+
+/* ATAK Terminal page */
+.term-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; }
+@media (max-width: 900px) { .term-grid { grid-template-columns: 1fr; } }

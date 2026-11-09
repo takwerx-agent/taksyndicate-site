@@ -1,0 +1,107 @@
+---
+import Base from '../layouts/Base.astro';
+import { terminalPlugins } from '../lib/plugins.js';
+const GH = 'https://github.com/takwerx';
+---
+<Base title="ATAK Terminal" description="TAKwerx ATAK Terminal: real ATAK with its real plugins in a window on your Mac or Windows PC. Free, open source, nothing leaves your machine.">
+  <main id="main">
+    <div class="wrap">
+      <a class="back" href="/takwerx/">← TAKwerx</a>
+      <div class="page-head">
+        <h1>ATAK Terminal</h1>
+        <p>Beta. Real ATAK, the Android app with its real plugins, running in a window on your Mac or Windows PC on its graphics chip. Train, build data packages and plan from a desk with a mouse and a big screen. Free, open source, and nothing leaves your machine.</p>
+      </div>
+
+      <section class="tw-term" id="install">
+        <div class="tw-term-text">
+          <span class="tw-kicker">Two steps</span>
+          <h2>Install it</h2>
+          <ul class="tw-term-points">
+            <li><b>Two steps.</b> Download ATAK-CIV from tak.gov, then paste one line.</li>
+            <li><b>Plugins built in.</b> TAKwerx Market comes installed, and Cursorwerx makes the mouse and trackpad just work.</li>
+            <li><b>Nothing leaves your machine.</b> No account, no telemetry, no paid tier.</li>
+          </ul>
+          <p class="tw-term-req">Mac: Apple Silicon (M1 or newer), macOS 13+ · Windows 10 (2004+) or 11, 64-bit, a supported graphics chip · 16 GB memory recommended</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href={`${GH}/atak-terminal`}>Install guide on GitHub</a>
+            <a class="btn btn-ghost" href="https://tak.gov/products/atak-civ">Get ATAK-CIV on tak.gov</a>
+          </div>
+        </div>
+        <div class="tw-term-cmds prose">
+          <div class="tw-os">Mac · Terminal</div>
+          <pre><code>curl -fsSL https://raw.githubusercontent.com/takwerx/atak-terminal/main/install.sh | bash</code></pre>
+          <div class="tw-os">Windows · PowerShell (not as Administrator)</div>
+          <pre><code>irm https://raw.githubusercontent.com/takwerx/atak-terminal/main/install.ps1 | iex</code></pre>
+          <p class="tw-term-note">First run downloads about 2 GB and takes a few minutes. After that ATAK opens in about half a minute from its own icon.</p>
+          {terminalPlugins.map((t) => (
+            <a class="tw-term-plug" href={`https://github.com/${t.repo}`}>
+              {t.icon && <img src={t.icon} alt="" width="44" height="44" loading="lazy" />}
+              <span>
+                <span class="tw-kicker">Only with ATAK Terminal</span>
+                <strong>{t.name}</strong>
+                <span class="tw-term-plug-d">{t.description}</span>
+              </span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <div class="term-grid">
+        <section>
+          <h2 class="section-title"><b>01</b> First run</h2>
+          <div class="prose">
+            <ol>
+              <li>Accept ATAK’s EULA and answer its first-start questions.</li>
+              <li>Wait a moment. TAKwerx Market installs itself, and ATAK asks to load it. Say yes.</li>
+              <li>Open the toolbar menu (☰), tap <strong>Market</strong>, and install <strong>Cursorwerx</strong>. Then the mouse and trackpad work: wheel zoom at the cursor, scrolling in menus and panes, clicks in text fields.</li>
+              <li>Install any other plugins you want the same way.</li>
+            </ol>
+            <p>After the first run, ATAK opens in about half a minute from its own icon: in Applications and the Dock on a Mac, in the Start Menu and on the desktop on Windows.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="section-title"><b>02</b> What works</h2>
+          <div class="prose">
+            <ul>
+              <li>ATAK 5.7 and 5.8 with plugins, at full screen resolution and about 50–58 frames a second.</li>
+              <li>Mouse and trackpad, with Cursorwerx.</li>
+              <li>Your position from the computer’s location, an exact coordinate, or a rough fix from your IP.</li>
+              <li>ATAK updates from inside ATAK. The Market offers the newest ATAK-CIV and moves your plugins over.</li>
+              <li>TAK Portal enrollment: open the portal in Chrome inside Android, sign in, and ATAK connects to the server.</li>
+              <li>On a Mac, drag a plugin APK onto the window to install it.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="section-title"><b>03</b> What you need</h2>
+          <div class="prose">
+            <ul>
+              <li><strong>Mac:</strong> Apple Silicon (M1 or newer), macOS 13 or newer. 16 GB of memory is comfortable.</li>
+              <li><strong>Windows:</strong> Windows 10 (2004 or newer) or 11, 64-bit, Intel or AMD. 16 GB of memory recommended. A graphics chip that Google’s Android emulator accepts: current NVIDIA, AMD, Intel Iris Xe or Arc. Most 6th and 7th generation Intel laptop graphics are too old.</li>
+              <li><strong>Both:</strong> about 23 GB of free disk, internet for the first run, and the ATAK-CIV APK from <a href="https://tak.gov/products/atak-civ">tak.gov</a> (a free login).</li>
+            </ul>
+            <p>Nothing else. No Docker, no Android Studio, no developer account. Linux is next.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="section-title"><b>04</b> Known limits in the beta</h2>
+          <div class="prose">
+            <ul>
+              <li>No multicast. TAK servers over TLS work; mesh situational awareness on 239.2.3.1 does not.</li>
+              <li>Nothing is code-signed yet. That is why the install is a line you paste instead of an app you download.</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <div class="cta-row" style="margin: 36px 0 60px">
+        <a class="btn btn-primary" href={`${GH}/atak-terminal`}>Full guide on GitHub</a>
+        <a class="btn btn-ghost" href={`${GH}/atak-terminal/issues/new`}>Report a problem</a>
+        <a class="btn btn-ghost" href="/takwerx/">More from TAKwerx</a>
+      </div>
+    </div>
+  </main>
+</Base>

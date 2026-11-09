@@ -33,45 +33,16 @@ const issueTargets = [
     <div class="wrap">
       <div class="page-head">
         <h1>TAKwerx</h1>
-        <p>The open-source workshop behind infra-TAK and the TAKwerx ATAK and CloudTAK plugins. Built by a first responder, free for everyone, and all of it on GitHub.</p>
+        <p>The open-source workshop behind the ATAK Terminal, infra-TAK, and the TAKwerx ATAK and CloudTAK plugins. Built by a first responder, free for everyone, and all of it on GitHub.</p>
       </div>
-
-      <section class="tw-term" id="terminal">
-        <div class="tw-term-text">
-          <span class="tw-kicker">New · Beta</span>
-          <h2>TAKwerx ATAK Terminal</h2>
-          <p class="tw-term-lede">Real ATAK, with its real plugins, in a window on your Mac or Windows PC, running on your graphics chip. Train, build data packages and plan from a desk with a mouse and a big screen.</p>
-          <ul class="tw-term-points">
-            <li><b>Two steps.</b> Download ATAK-CIV from tak.gov, then paste one line.</li>
-            <li><b>Plugins built in.</b> TAKwerx Market comes installed, and Cursorwerx makes the mouse and trackpad just work.</li>
-            <li><b>Nothing leaves your machine.</b> No account, no telemetry, no paid tier.</li>
-          </ul>
-          <p class="tw-term-req">Mac: Apple Silicon (M1 or newer), macOS 13+ · Windows 10 (2004+) or 11, 64-bit, a supported graphics chip · 16 GB memory recommended</p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href={`${GH}/atak-terminal`}>Install guide on GitHub</a>
-            <a class="btn btn-ghost" href="https://tak.gov/products/atak-civ">Get ATAK-CIV on tak.gov</a>
-          </div>
-        </div>
-        <div class="tw-term-cmds prose">
-          <div class="tw-os">Mac · Terminal</div>
-          <pre><code>curl -fsSL https://raw.githubusercontent.com/takwerx/atak-terminal/main/install.sh | bash</code></pre>
-          <div class="tw-os">Windows · PowerShell (not as Administrator)</div>
-          <pre><code>irm https://raw.githubusercontent.com/takwerx/atak-terminal/main/install.ps1 | iex</code></pre>
-          <p class="tw-term-note">First run downloads about 2 GB and takes a few minutes. After that ATAK opens in about half a minute from its own icon.</p>
-          {terminalPlugins.map((t) => (
-            <a class="tw-term-plug" href={`https://github.com/${t.repo}`}>
-              {t.icon && <img src={t.icon} alt="" width="44" height="44" loading="lazy" />}
-              <span>
-                <span class="tw-kicker">Only with ATAK Terminal</span>
-                <strong>{t.name}</strong>
-                <span class="tw-term-plug-d">{t.description}</span>
-              </span>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      <div class="tw-hubs two">
+      <div class="tw-hubs">
+        <a class="tw-hub" href="/atak-terminal/">
+          <span class="tw-kicker">Desktop · New beta</span>
+          <h2>ATAK Terminal</h2>
+          <p>Real ATAK, with its real plugins, in a window on your Mac or Windows PC. Download ATAK-CIV from tak.gov, paste one line, and train, build data packages and plan from a desk with a mouse and a big screen.</p>
+          <span class="tw-stat"><b>2</b> steps · <b>0</b> accounts</span>
+          <span class="repo-cta">See how it works →</span>
+        </a>
         <a class="tw-hub" href="/infra-tak/">
           <span class="tw-kicker">Server side</span>
           <h2>infra-TAK</h2>
@@ -80,11 +51,11 @@ const issueTargets = [
           <span class="repo-cta">Install guide →</span>
         </a>
         <a class="tw-hub" href="/plugins/">
-          <span class="tw-kicker">ATAK &amp; CloudTAK</span>
+          <span class="tw-kicker">ATAK · CloudTAK</span>
           <h2>Plugins</h2>
-          <p>ATAK plugins for maps, weather, fire, alerts, airspace, cameras and comms, installed and updated from inside ATAK by {featured?.name}. Plus CloudTAK plugins for dispatch and, with infra-TAK, live exercises.</p>
+          <p>We build plugins for both ATAK and CloudTAK. ATAK plugins for maps, weather, fire, alerts, airspace, cameras and comms install and update from inside ATAK through {featured?.name}. CloudTAK plugins bring dispatch and, with infra-TAK, live exercises to the browser.</p>
           <span class="tw-stat"><b>{plugins.length}</b> ATAK · <b>{cloudtak.length}</b> CloudTAK · <b>{community.length}</b> community</span>
-          <span class="repo-cta">Browse ATAK plugins →</span>
+          <span class="repo-cta">Browse the plugins →</span>
         </a>
       </div>
 
