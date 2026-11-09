@@ -76,7 +76,7 @@ The official TAK Server from the federal government is available for download at
 
 [infra-TAK](/infra-tak/) is a free, open-source web console that deploys and manages TAK Server in your own environment, along with Authentik, TAK Portal, SSL, CloudTAK, MediaMTX video and Node-RED. Upload the TAK Server package from TAK.gov and run the rest from the browser.
 
-A variety of vendors offer TAK Server as a Service. You can leave it to them to manage your deployment. A list of vendors in no particular order of preference; Realm Alliance, Parsons, Booz Allen, RaytheonBBN, EO-TAK, GoTAK, Syzygy, [TAKGRID](https://takgrid.com/) and [District 47](https://district47.us/). [OpenTAKServer](https://opentakserver.io) is an open-source TAK server you can deploy in your own environment. All of these vendors are listed on the [Links page](/links/).
+A variety of vendors offer TAK Server as a Service. You can leave it to them to manage your deployment. A list of vendors in no particular order of preference; Realm Alliance, Parsons, Booz Allen, RaytheonBBN, EOTAK, GoTAK, Syzygy, [TAKGRID](https://takgrid.com/) and [District 47](https://district47.us/). [OpenTAKServer](https://opentakserver.io) is an open-source TAK server you can deploy in your own environment. All of these vendors are listed on the [Links page](/links/).
 
 ### Does TAK work without a cellular connection?
 
