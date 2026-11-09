@@ -22,6 +22,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    # The Cloudflare secrets live in this environment, which only `main` may use,
+    # so workflows on other branches (e.g. takwerx-agent's claude/* PR branches) can't read them.
+    environment: production
     env:
       CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
     steps:
