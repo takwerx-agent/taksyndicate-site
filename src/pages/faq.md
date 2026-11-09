@@ -82,7 +82,9 @@ A variety of vendors offer TAK Server as a Service. You can leave it to them to 
 
 One of the greatest features about TAK is its ability to work on a variety of networks and communication pathways. If you work in areas with poor to no cellular coverage, TAK provides an opportunity to continue to communicate. 
 
-Alternative communications solutions from the following vendors are listed on the [Links page](/links/). These are listed in no particular order of preference; Somewear Labs, BearTooth, GoTenna, Meshtastic, ToughStump ATOS, Doodle Labs, TrellisWare, Persistent Systems, Silvus and Fenix Group.
+Alternative communications solutions from the following vendors, in no particular order of preference: Somewear Labs, Beartooth, goTenna, Tough Stump ATOS, Doodle Labs, TrellisWare, Persistent Systems, Silvus and Nokia Federal (formerly Fenix Group). Many of them are on the [Links page](/links/).
+
+Two open-source, low-cost LoRa mesh projects also carry TAK traffic with no cell or internet connection at all: [Meshtastic](https://meshtastic.org/docs/software/integrations/integrations-atak-plugin/), which has an ATAK plugin, and [MeshCore](https://meshcore.co.uk/), a newer off-grid mesh system built on the same kind of radios.
 
 ATAK and TAK Aware have also been tested over T-Mobile's satellite service (T-Satellite), which connects compatible phones directly to satellites where there is no cell coverage.
 
