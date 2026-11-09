@@ -678,3 +678,11 @@ main.map-page { padding: 0; }
 .term-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; }
 @media (max-width: 900px) { .term-grid { grid-template-columns: 1fr; } }
 .lk-yt .lk-logo img { width: 76px; height: 76px; max-height: none; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px #fff, 0 0 0 4px rgba(13,23,34,.15); }
+
+/* larger brand marks: Syndicate shield in the home hero, TAKwerx shield on its page */
+.hero-logo { display: block; width: 170px; height: auto; margin: 0 0 22px; filter: drop-shadow(0 10px 24px rgba(0,0,0,.45)); }
+@media (max-width: 980px) { .hero-logo { width: 120px; margin-bottom: 14px; } }
+.tw-head { display: grid; grid-template-columns: auto 1fr; column-gap: 28px; align-items: center; }
+.tw-head .tw-logo { grid-row: span 2; width: 140px; height: auto; filter: drop-shadow(0 10px 24px rgba(0,0,0,.45)); }
+.tw-head h1, .tw-head p { grid-column: 2; }
+@media (max-width: 640px) { .tw-head { grid-template-columns: 1fr; } .tw-head .tw-logo { width: 100px; margin-bottom: 10px; } .tw-head h1, .tw-head p { grid-column: 1; } }
