@@ -13,10 +13,12 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
 
       {toc.length > 0 && (
         <details class="toc-mobile">
-          <summary>On this page<span>{toc.length}</span></summary>
-          {toc.map((h) => (
-            <a href={`#${h.slug}`} class={h.depth === 3 ? 'lvl-3' : ''}>{h.text}</a>
-          ))}
+          <summary><b>Jump to</b><span class="toc-now">{toc[0].text}</span><i aria-hidden="true"></i></summary>
+          <nav class="toc-list" aria-label="Sections on this page">
+            {toc.map((h) => (
+              <a href={`#${h.slug}`} class={h.depth === 3 ? 'lvl-3' : ''}>{h.text}</a>
+            ))}
+          </nav>
         </details>
       )}
 
@@ -33,4 +35,19 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
       </div>
     </div>
   </main>
+  <script is:inline>
+    // Phones: the sticky "Jump to" bar names the section you are in, and closes after a pick.
+    (function () {
+      var box = document.querySelector('.toc-mobile'); if (!box) return;
+      var now = box.querySelector('.toc-now');
+      box.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { box.open = false; }); });
+      var heads = Array.prototype.slice.call(document.querySelectorAll('.prose h2[id], .prose h3[id]'));
+      function update() {
+        var cur = heads[0];
+        for (var i = 0; i < heads.length; i++) { if (heads[i].getBoundingClientRect().top < 140) cur = heads[i]; else break; }
+        if (cur) now.textContent = cur.textContent;
+      }
+      window.addEventListener('scroll', update, { passive: true }); update();
+    })();
+  </script>
 </Base>

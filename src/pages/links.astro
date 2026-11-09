@@ -90,7 +90,11 @@ const channels = [
         <h1>Links</h1>
         <p>Vendors, agencies, communities and tools across the TAK ecosystem. Listed to help you find your way, not as endorsements.</p>
       </div>
-      <div class="lk-grid">
+      <nav class="lk-jump" aria-label="Sections">
+        <a href="#orgs">Organizations <span>{links.length}</span></a>
+        <a href="#youtube">YouTube channels <span>{channels.length}</span></a>
+      </nav>
+      <div class="lk-grid" id="orgs">
         {links.map(([img, name, kind, href]) => (
           <a class="lk-card" href={href} target="_blank" rel="noopener">
             <span class="lk-logo"><img src={img} alt={`${name} logo`} loading="lazy" /></span>
