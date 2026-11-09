@@ -3,5 +3,10 @@
   "compatibility_date": "2026-08-23",
   "assets": {
     "directory": "./dist"
-  }
+  },
+  // The live domain. Cloudflare creates the DNS records for these itself.
+  "routes": [
+    { "pattern": "www.thetaksyndicate.org", "custom_domain": true },
+    { "pattern": "thetaksyndicate.org", "custom_domain": true }
+  ]
 }
