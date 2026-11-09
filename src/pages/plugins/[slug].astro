@@ -40,7 +40,7 @@ const reqs = [['Equipment required', s.requires], ['Works with', s.supports], ['
           ))}
           <p class="dl-note">Pick the build that matches your ATAK version, then load it in ATAK’s Plugins manager. Or get it through <a href="/plugins/takwerx-market/">TAKwerx Market</a>.</p>
           <div class="dl-links">
-            {p.manual && <a href={p.manual.href} target="_blank" rel="noopener">User manual (PDF, {mb(p.manual.bytes)})</a>}
+            {p.manual && <a href="#manual">User manual</a>}
             {p.guide && <a href={p.guide}>Online guide</a>}
             <a href={p.release}>Release notes</a>
             <a href={repoUrl}>Source code</a>
@@ -92,7 +92,7 @@ const reqs = [['Equipment required', s.requires], ['Works with', s.supports], ['
 
           {p.manual && (
             <section>
-              <h2 class="section-title"><b>04</b> User manual</h2>
+              <h2 class="section-title" id="manual"><b>04</b> User manual</h2>
               <div class="manual">
                 <a class="manual-cover" href={p.manual.href} target="_blank" rel="noopener" data-pdf={p.manual.href}>
                   {p.manual.cover && <img src={p.manual.cover} alt={`${p.name} user manual title page`} loading="lazy" />}
