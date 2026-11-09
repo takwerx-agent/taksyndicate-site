@@ -84,7 +84,7 @@ One of the greatest features about TAK is its ability to work on a variety of ne
 
 Alternative communications solutions from the following vendors, in no particular order of preference: Somewear Labs, Beartooth, goTenna, Tough Stump ATOS, Doodle Labs, TrellisWare, Persistent Systems, Silvus and Nokia Federal (formerly Fenix Group). Many of them are on the [Links page](/links/).
 
-Two open-source, low-cost LoRa mesh projects also carry TAK traffic with no cell or internet connection at all: [Meshtastic](https://meshtastic.org/docs/software/integrations/integrations-atak-plugin/), which has an ATAK plugin, and [MeshCore](https://meshcore.co.uk/), a newer off-grid mesh system built on the same kind of radios.
+Two open-source, low-cost LoRa mesh projects work with no cell or internet connection at all. [Meshtastic](https://meshtastic.org/docs/software/integrations/integrations-atak-plugin/) has an ATAK plugin that carries positions, chat and other TAK traffic over the mesh. [MeshCore](https://meshcore.co.uk/) is a newer off-grid mesh system on the same kind of radios; it is built for messaging, and TAK support for it is still on developers' roadmaps.
 
 ATAK and TAK Aware have also been tested over T-Mobile's satellite service (T-Satellite), which connects compatible phones directly to satellites where there is no cell coverage.
 
